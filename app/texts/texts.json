@@ -1,0 +1,239 @@
+{
+  "hero": {
+    "imageAlt": "Dr. Leandro Gregório — Cirurgião Plástico",
+    "eyebrow": "Cirurgia Plástica",
+    "headline": "Leandro Gregório",
+    "body": "Cirurgia plástica com precisão, critério e respeito absoluto pela sua identidade.",
+    "ctaLabel": "Agendar conversa",
+    "ctaHref": "#contato",
+    "quote": "Cada cirurgia é um encontro entre confiança, responsabilidade e propósito.",
+    "quoteAttribution": "Dr. Leandro Gregório — Cirurgião Plástico",
+    "credentials": [
+      { "label": "CRM-SP", "value": "231278" },
+      { "label": "RQE", "value": "136020" },
+      { "label": "Membro", "value": "SBCP · ISAPS" }
+    ]
+  },
+  "about": {
+    "ariaLabel": "Sobre o Dr. Leandro Gregório",
+    "headline": "Confiança que todos sentem.",
+    "bodyParts": [
+      "Formado pela Universidade Federal de Minas Gerais, com residência em Cirurgia Geral pelo Hospital Odilon Behrens e especialização em Cirurgia Plástica pelo Hospital do Servidor Público Municipal de São Paulo, o ",
+      "Dr. Leandro Gregório",
+      " construiu uma prática baseada em escuta genuína e respeito ao resultado natural. Para ele, o melhor procedimento é aquele que ninguém nota — mas que muda tudo."
+    ],
+    "ctaButtonLabel": "Agendar consulta",
+    "ctaButtonHref": "#contato"
+  },
+  "scrollTextReveal": {
+    "text": "Cada história carrega uma forma única de beleza, decisão e transformação. Nenhum olhar é igual ao outro, porque nenhum caminho vivido é o mesmo. Por trás de cada escolha, existe um tempo, uma memória e um motivo profundo. É nesse encontro entre identidade, desejo e verdade que o cuidado começa a fazer sentido.",
+    "accentWords": [
+      "história",
+      "beleza",
+      "transformação",
+      "identidade",
+      "verdade",
+      "cuidado"
+    ]
+  },
+  "storySection": {
+    "label": "04 — PROCEDIMENTOS",
+    "title": "Procedimentos",
+    "titleItalic": "realizados",
+    "subtitle": "Cada procedimento é planejado de forma individualizada, com base na anatomia, nos desejos e no estilo de vida de cada paciente.",
+    "cards": [
+      {
+        "index": "01",
+        "title": "When Dreams Start Small",
+        "body": "I grew up in post-communist Poland, a world where ambition was dangerous and opportunity scarce. Tennis became my escape and my whole identity.\n\nBy eighteen I was traveling the world on the WTA tour, ranked among the top players, fighting with nothing but grit and stubbornness.\n\nBut without financial backing, the dream collapsed. Overnight, the identity I had built my life around was gone, and I was forced to face the question: who am I without the game?",
+        "bodyMobile": "I grew up in post-communist Poland, where ambition was risky and opportunities scarce. Tennis became my escape and identity.\n\nBy eighteen I was on the WTA tour, fueled only by grit.\n\nBut without financial backing, the dream collapsed — and overnight I had to face the question: who am I without the game?",
+        "bulletImages": [
+          { "src": "/images/poland-90s.jpg", "alt": "Poland, 1990s" },
+          { "src": "/images/wta-tour.jpg", "alt": "WTA Tour" },
+          { "src": "/images/crossroads.jpg", "alt": "The Crossroads" }
+        ]
+      },
+      {
+        "index": "02",
+        "title": "From Wall Street to the Freezer Floor",
+        "body": "With nothing left to fall back on, I left Poland for America. I started in a community college in Kansas, pushed my way to Baylor, and eventually earned a scholarship at the University of California, Berkeley.\n\nI became the first in my family to graduate from university, and I did it with honors.\n\nIt wasn't about the degree itself; it was about proving that reinvention is possible, even when you're standing on broken ground.",
+        "bodyMobile": "",
+        "bulletImages": [
+          { "src": "/images/kansas.jpg", "alt": "Kansas" },
+          { "src": "/images/berkeley.jpg", "alt": "Berkeley" },
+          { "src": "/images/graduation.jpg", "alt": "Graduation" }
+        ]
+      },
+      {
+        "index": "03",
+        "title": "Betting Everything on Myself",
+        "body": "After Berkeley I went straight into investment banking in London. Prestige, power, the adrenaline of 100-hour weeks — it looked like success.\n\nBut the longer I stayed, the louder the question became: is this really it?\n\nSo I left and opened a restaurant. I traded boardrooms for basements, Armani suits for aprons. Three years later, I closed it, broke and exhausted.\n\nLater I thrived in venture capital, working with founders and shaping strategy — until COVID collapsed our fund.",
+        "bodyMobile": "After Berkeley, I entered investment banking in London — prestige, power, 100-hour weeks. It looked like success, but the question grew louder: is this really it?\n\nI left to open a restaurant, only to close it three years later, broke and exhausted.\n\nLater I thrived in venture capital — until COVID collapsed our fund.",
+        "bulletImages": [
+          { "src": "/images/banking.jpg", "alt": "Banking" },
+          { "src": "/images/restaurant.jpg", "alt": "Restaurant" },
+          { "src": "/images/venture.jpg", "alt": "Venture Capital" }
+        ]
+      },
+      {
+        "index": "04",
+        "title": "The Moment It All Made Sense",
+        "body": "Through all those chapters — tennis, banking, entrepreneurship, venture — I began to see the same truth: the strongest performers never do it alone. Athletes always have coaches. Executives and founders need them too.\n\nCoaching is not damage control. It's not about fixing what is broken. It is about clarity, performance, and the courage to make the moves you know you need to make.\n\nThat realization didn't come from a book. It came from living every version of reinvention firsthand.",
+        "bodyMobile": "Through tennis, banking, entrepreneurship, and venture — the same truth emerged: the strongest performers never do it alone.\n\nCoaching isn't damage control. It's about clarity, performance, and courage.\n\nThat realization came from living every version of reinvention firsthand.",
+        "bulletImages": [
+          { "src": "/images/coaching.jpg", "alt": "Coaching" },
+          { "src": "/images/clarity.jpg", "alt": "Clarity" },
+          { "src": "/images/performance.jpg", "alt": "Performance" }
+        ]
+      }
+    ]
+  },
+  "testimonialsMarquee": {
+    "label": "DEPOIMENTOS",
+    "title": "O que meus pacientes",
+    "titleAccent": "dizem",
+    "testimonials": [
+      {
+        "quote": "Working with her was the single most transformative professional experience of my life. She saw what I couldn't see in myself.",
+        "name": "Daniel Kramer",
+        "date": "March 2026"
+      },
+      {
+        "quote": "She doesn't coach you toward her answers — she coaches you toward your own clarity.",
+        "name": "Sofia Almqvist",
+        "date": "February 2026"
+      },
+      {
+        "quote": "Three months in, I had left a career that was killing me and started the company I'd been dreaming about for a decade.",
+        "name": "Marcus Webb",
+        "date": "January 2026"
+      },
+      {
+        "quote": "What surprised me most was how quickly she cut through the noise. Session one, she named the exact pattern I'd been running from.",
+        "name": "Lena Horowitz",
+        "date": "December 2025"
+      },
+      {
+        "quote": "I went in thinking I needed a strategy. I left with a spine.",
+        "name": "Thomas Eriksson",
+        "date": "November 2025"
+      },
+      {
+        "quote": "She has this rare ability to hold space for your vulnerability while also holding you accountable to your potential.",
+        "name": "Amara Chen",
+        "date": "October 2025"
+      },
+      {
+        "quote": "Before coaching, I was successful but exhausted. After, I was successful and alive. That distinction changed everything.",
+        "name": "James Aldridge",
+        "date": "September 2025"
+      },
+      {
+        "quote": "The ROI conversation misses the point entirely. You can't put a number on finally understanding who you are at your best.",
+        "name": "Nina Vasquez",
+        "date": "August 2025"
+      },
+      {
+        "quote": "I've had executive coaches before. They gave me frameworks. She gave me the courage to stop hiding behind them.",
+        "name": "Oliver Strauss",
+        "date": "July 2025"
+      },
+      {
+        "quote": "She asked me one question in our first session that I'm still answering six months later. That's the mark of a real coach.",
+        "name": "Rachel Fontaine",
+        "date": "June 2025"
+      }
+    ]
+  },
+  "contactSection": {
+    "label": "05 — CONTATO",
+    "title": "Vamos conversar",
+    "titleItalic": "conversar",
+    "subtitle": "Agende uma consulta ou entre em contato para tirar suas dúvidas. Estamos à disposição para atendê-lo com excelência.",
+    "marqueeText": "Contato  ·  ",
+    "contactItems": [
+      {
+        "label": "Telefone",
+        "value": "(11) 3889-0893",
+        "href": "tel:+551138890893"
+      },
+      {
+        "label": "Endereço",
+        "value": "Rua Itapeva, 286 — Cj. 82\nBela Vista, São Paulo — SP"
+      },
+      {
+        "label": "Horário",
+        "value": "Seg – Sex, 9h – 18h"
+      }
+    ],
+    "whatsappHref": "https://wa.me/551138890893",
+    "whatsappLabel": "Agendar pelo WhatsApp"
+  },
+  "footerSection": {
+    "logoAlt": "Dr. Leandro Gregório",
+    "brandName": "Dr. Leandro Gregório",
+    "brandDescription": "Cirurgia plástica com excelência técnica e atenção personalizada — referência em procedimentos estéticos e reparadores em São Paulo.",
+    "columns": [
+      {
+        "title": "Navegação",
+        "links": [
+          { "label": "Início", "href": "#" },
+          { "label": "Sobre", "href": "#sobre" },
+          { "label": "Procedimentos", "href": "#procedimentos" },
+          { "label": "Depoimentos", "href": "#depoimentos" },
+          { "label": "Contato", "href": "#contato" }
+        ]
+      },
+      {
+        "title": "Consultório",
+        "links": [
+          { "label": "Rua Itapeva, 286 — Cj. 82" },
+          { "label": "Bela Vista, São Paulo — SP" },
+          { "label": "(11) 3889-0893", "href": "tel:+551138890893" }
+        ]
+      },
+      {
+        "title": "Credenciais",
+        "links": [
+          { "label": "CRM SP 231278" },
+          { "label": "RQE 136020" },
+          { "label": "Membro SBCP" },
+          { "label": "Membro ISAPS" }
+        ]
+      }
+    ],
+    "socials": [
+      { "platform": "Instagram", "href": "https://instagram.com/dr.leandrogregorio" },
+      { "platform": "LinkedIn", "href": "#" },
+      { "platform": "WhatsApp", "href": "https://wa.me/551138890893" }
+    ],
+    "copyright": "© 2025 Dr. Leandro Gregório. Todos os direitos reservados.",
+    "legalLinks": [
+      { "label": "Termos de Uso", "href": "#" },
+      { "label": "Política de Privacidade", "href": "#" }
+    ],
+    "giantName": "Leandro Gregório",
+    "scrollTopLabel": "Topo",
+    "scrollTopAriaLabel": "Voltar ao topo"
+  },
+  "contact": {
+    "eyebrow": "",
+    "headline": "",
+    "ctaLabel": "",
+    "ctaHref": ""
+  },
+  "footer": {
+    "copyright": ""
+  },
+  "navbar": {
+    "links": []
+  },
+  "splashScreen": {
+  "name": "Leandro Gregório",
+  "logo": {
+    "enabled": true,
+    "src": "/images/leandro-gregorio/logo-leandro.webp",
+    "alt": "Leandro Gregório"
+  }
+}
+}

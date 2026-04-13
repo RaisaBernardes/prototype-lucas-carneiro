@@ -1,9 +1,9 @@
 "use client";
 
 import { useRef, useEffect } from "react";
-import type { ReactNode } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import texts from "../app/texts/texts.json";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -15,44 +15,15 @@ function cn(...classes: (string | false | null | undefined)[]) {
 }
 
 /* ─────────────────────────────────────────────
-   TYPES
-   ───────────────────────────────────────────── */
-interface AboutSectionProps {
-  headline?: string;
-  body?: ReactNode;
-  ctaButtonLabel?: string;
-  ctaButtonHref?: string;
-}
-
-/* ─────────────────────────────────────────────
-   DEFAULTS
-   ───────────────────────────────────────────── */
-const DEFAULT_HEADLINE = "Confiança que todos sentem.";
-
-const DEFAULT_BODY = (
-  <>
-    Formado pela Universidade Federal de Minas Gerais, com residência em
-    Cirurgia Geral pelo Hospital Odilon Behrens e especialização em Cirurgia
-    Plástica pelo Hospital do Servidor Público Municipal de São Paulo, o{" "}
-    <strong className="font-medium">Dr. Leandro Gregório</strong> construiu uma
-    prática baseada em escuta genuína e respeito ao resultado natural. Para ele,
-    o melhor procedimento é aquele que ninguém nota — mas que muda tudo.
-  </>
-);
-
-/* ─────────────────────────────────────────────
    COMPONENT
    ───────────────────────────────────────────── */
-export default function AboutSection({
-  headline = DEFAULT_HEADLINE,
-  body = DEFAULT_BODY,
-  ctaButtonLabel = "Agendar consulta",
-  ctaButtonHref = "#contato",
-}: AboutSectionProps) {
+export default function AboutSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const headlineRef = useRef<HTMLHeadingElement>(null);
   const bodyRef = useRef<HTMLDivElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
+
+  const about = texts.about;
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -103,7 +74,7 @@ export default function AboutSection({
     <section
       ref={sectionRef}
       className="w-full bg-bg"
-      aria-label="Sobre o Dr. Leandro Gregório"
+      aria-label={about.ariaLabel}
     >
       <div className="mx-auto w-full max-w-330 px-6 md:px-10 lg:px-14">
         {/* ── Grid: headline | body ── */}
@@ -112,7 +83,7 @@ export default function AboutSection({
             "grid grid-cols-1 gap-y-8",
             "pt-20 pb-0",
             "md:grid-cols-[1fr_360px] md:gap-x-16 md:pt-28 md:my-16",
-            "lg:grid-cols-[1fr_400px] lg:gap-x-24",
+            "lg:grid-cols-[1fr_400px] lg:gap-x-24"
           )}
         >
           {/* Headline */}
@@ -124,10 +95,10 @@ export default function AboutSection({
                 "text-[clamp(32px,5.2vw,80px)]",
                 "font-light leading-[1.0] tracking-[-0.05em]",
                 "text-ink",
-                "antialiased",
+                "antialiased"
               )}
             >
-              {headline}
+              {about.headline}
             </h2>
           </div>
 
@@ -138,10 +109,12 @@ export default function AboutSection({
                 "font-body",
                 "text-[clamp(14px,1vw,15px)]",
                 "font-light leading-[1.75]",
-                "text-ink-mid",
+                "text-ink-mid"
               )}
             >
-              {body}
+              {about.bodyParts[0]}
+              <strong className="font-medium">{about.bodyParts[1]}</strong>
+              {about.bodyParts[2]}
             </p>
           </div>
         </div>
@@ -152,7 +125,7 @@ export default function AboutSection({
           className="mt-6 pb-20 md:-mt-14 md:pb-28 max-w-[520px]"
         >
           <a
-            href={ctaButtonHref}
+            href={about.ctaButtonHref}
             className={cn(
               "inline-block",
               "rounded-xs",
@@ -162,10 +135,10 @@ export default function AboutSection({
               "tracking-[0.02em]",
               "no-underline",
               "transition-all duration-300 ease-spring",
-              "hover:opacity-95  hover:text-white",
+              "hover:opacity-95  hover:text-white"
             )}
           >
-            {ctaButtonLabel}
+            {about.ctaButtonLabel}
           </a>
         </div>
       </div>

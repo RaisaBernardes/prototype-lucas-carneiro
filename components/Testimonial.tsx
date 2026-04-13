@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import texts from "../app/texts/texts.json";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -32,72 +33,6 @@ interface TestimonialsMarqueeProps {
 }
 
 /* ─────────────────────────────────────────────
-   DEFAULT DATA
-   ───────────────────────────────────────────── */
-const defaultTestimonials: Testimonial[] = [
-  {
-    quote:
-      "Working with her was the single most transformative professional experience of my life. She saw what I couldn't see in myself.",
-    name: "Daniel Kramer",
-    date: "March 2026",
-  },
-  {
-    quote:
-      "She doesn't coach you toward her answers — she coaches you toward your own clarity.",
-    name: "Sofia Almqvist",
-    date: "February 2026",
-  },
-  {
-    quote:
-      "Three months in, I had left a career that was killing me and started the company I'd been dreaming about for a decade.",
-    name: "Marcus Webb",
-    date: "January 2026",
-  },
-  {
-    quote:
-      "What surprised me most was how quickly she cut through the noise. Session one, she named the exact pattern I'd been running from.",
-    name: "Lena Horowitz",
-    date: "December 2025",
-  },
-  {
-    quote:
-      "I went in thinking I needed a strategy. I left with a spine.",
-    name: "Thomas Eriksson",
-    date: "November 2025",
-  },
-  {
-    quote:
-      "She has this rare ability to hold space for your vulnerability while also holding you accountable to your potential.",
-    name: "Amara Chen",
-    date: "October 2025",
-  },
-  {
-    quote:
-      "Before coaching, I was successful but exhausted. After, I was successful and alive. That distinction changed everything.",
-    name: "James Aldridge",
-    date: "September 2025",
-  },
-  {
-    quote:
-      "The ROI conversation misses the point entirely. You can't put a number on finally understanding who you are at your best.",
-    name: "Nina Vasquez",
-    date: "August 2025",
-  },
-  {
-    quote:
-      "I've had executive coaches before. They gave me frameworks. She gave me the courage to stop hiding behind them.",
-    name: "Oliver Strauss",
-    date: "July 2025",
-  },
-  {
-    quote:
-      "She asked me one question in our first session that I'm still answering six months later. That's the mark of a real coach.",
-    name: "Rachel Fontaine",
-    date: "June 2025",
-  },
-];
-
-/* ─────────────────────────────────────────────
    TESTIMONIAL CARD
    ───────────────────────────────────────────── */
 function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
@@ -119,23 +54,21 @@ function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
         "ease-spring",
         "hover:border-ink/14 hover:shadow-[0_4px_32px_rgba(25,25,23,0.04)]",
         "motion-reduce:opacity-100! motion-reduce:translate-y-0!",
-        "motion-reduce:rotate-0! motion-reduce:transition-none!",
+        "motion-reduce:rotate-0! motion-reduce:transition-none!"
       )}
     >
-      {/* Quote mark */}
       <span
         className={cn(
           "block pointer-events-none select-none",
           "font-serif text-5xl max-md:text-4xl",
           "font-light leading-none",
-          "text-green/30 mb-2",
+          "text-green/30 mb-2"
         )}
         aria-hidden="true"
       >
         &ldquo;
       </span>
 
-      {/* Quote text */}
       <blockquote
         className={cn(
           "font-serif italic",
@@ -143,22 +76,20 @@ function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
           "max-md:text-[0.9375rem]",
           "font-normal leading-[1.6]",
           "text-ink/75",
-          "m-0 flex-grow",
+          "m-0 flex-grow"
         )}
       >
         {testimonial.quote}
       </blockquote>
 
-      {/* Footer: divider + name + date */}
       <div className="mt-6 pt-4">
-        {/* Accent divider */}
         <div className="w-6 h-px bg-green/40 mb-3" />
 
         <p
           className={cn(
             "font-body text-xs font-semibold",
             "tracking-[0.1em] uppercase",
-            "text-ink m-0",
+            "text-ink m-0"
           )}
         >
           {testimonial.name}
@@ -169,7 +100,7 @@ function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
             className={cn(
               "font-body text-[0.625rem] font-normal",
               "tracking-[0.06em]",
-              "text-ink/40 mt-1 mb-0",
+              "text-ink/40 mt-1 mb-0"
             )}
           >
             {testimonial.date}
@@ -184,10 +115,10 @@ function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
    MAIN COMPONENT
    ───────────────────────────────────────────── */
 export default function TestimonialsMarquee({
-  label = "DEPOIMENTOS",
-  title = "O que meus pacientes",
-  titleAccent = "dizem",
-  testimonials = defaultTestimonials,
+  label = texts.testimonialsMarquee.label,
+  title = texts.testimonialsMarquee.title,
+  titleAccent = texts.testimonialsMarquee.titleAccent,
+  testimonials = texts.testimonialsMarquee.testimonials,
   className = "",
 }: TestimonialsMarqueeProps) {
   const sectionRef = useRef<HTMLElement>(null);
@@ -229,7 +160,6 @@ export default function TestimonialsMarquee({
     const isMobile = window.matchMedia("(max-width: 767px)").matches;
 
     const ctx = gsap.context(() => {
-      /* ── Header reveal ── */
       const headerTl = gsap.timeline({
         scrollTrigger: {
           trigger: headerRef.current,
@@ -252,7 +182,6 @@ export default function TestimonialsMarquee({
         );
 
       if (isMobile) {
-        /* ── Mobile: elegant staggered reveal per card ── */
         const mobileCards =
           mobileStackRef.current?.querySelectorAll("[data-card]");
         if (mobileCards?.length) {
@@ -273,9 +202,6 @@ export default function TestimonialsMarquee({
           });
         }
       } else {
-        /* ── Desktop: original staggered entrance + parallax ── */
-
-        /* Row 1 cards */
         const row1Cards = row1Ref.current?.querySelectorAll("[data-card]");
         if (row1Cards?.length) {
           gsap.from(Array.from(row1Cards), {
@@ -293,7 +219,6 @@ export default function TestimonialsMarquee({
           });
         }
 
-        /* Row 2 cards */
         const row2Cards = row2Ref.current?.querySelectorAll("[data-card]");
         if (row2Cards?.length) {
           gsap.from(Array.from(row2Cards), {
@@ -311,7 +236,6 @@ export default function TestimonialsMarquee({
           });
         }
 
-        /* Parallax: rows drift in opposite directions */
         if (row1Ref.current) {
           gsap.fromTo(
             row1Ref.current,
@@ -351,7 +275,6 @@ export default function TestimonialsMarquee({
     return () => ctx.revert();
   }, []);
 
-  /* Split testimonials into two rows (odds & evens) — desktop only */
   const row1 = testimonials.filter((_, i) => i % 2 === 0);
   const row2 = testimonials.filter((_, i) => i % 2 !== 0);
 
@@ -362,18 +285,15 @@ export default function TestimonialsMarquee({
         "w-full bg-bg overflow-hidden",
         "py-[clamp(5rem,10vw,8rem)]",
         "max-md:py-[clamp(3rem,8vw,5rem)]",
-        className,
+        className
       )}
     >
-      {/* ══════════════════════════════════════
-          HEADER
-          ══════════════════════════════════════ */}
       <div
         ref={headerRef}
         className={cn(
           "max-w-[1440px] mx-auto",
           "mb-[clamp(3rem,6vw,5rem)]",
-          "px-[clamp(1.25rem,3vw,2.5rem)]",
+          "px-[clamp(1.25rem,3vw,2.5rem)]"
         )}
       >
         <div className="max-w-[680px]">
@@ -384,7 +304,7 @@ export default function TestimonialsMarquee({
               "font-body text-[0.6875rem] font-medium",
               "tracking-[0.25em] uppercase",
               "text-ink/40 mb-4",
-              "motion-reduce:opacity-100!",
+              "motion-reduce:opacity-100!"
             )}
           >
             {label}
@@ -396,7 +316,7 @@ export default function TestimonialsMarquee({
               "font-display text-[clamp(2.5rem,5.5vw,4.5rem)]",
               "font-light leading-[1.08] tracking-[-0.03em]",
               "text-ink m-0",
-              "motion-reduce:opacity-100!",
+              "motion-reduce:opacity-100!"
             )}
           >
             {title}{" "}
@@ -405,19 +325,15 @@ export default function TestimonialsMarquee({
         </div>
       </div>
 
-      {/* ══════════════════════════════════════
-          CARDS
-          ══════════════════════════════════════ */}
       <div
         className={cn(
           "max-w-[1440px] mx-auto",
           "px-[clamp(1.25rem,3vw,2.5rem)]",
           "flex flex-col",
           "gap-[clamp(0.75rem,1.5vw,1.25rem)]",
-          "max-md:gap-0",
+          "max-md:gap-0"
         )}
       >
-        {/* ── Mobile: single aligned stack (hidden on md+) ── */}
         <div
           ref={mobileStackRef}
           className="flex flex-col gap-3 md:hidden"
@@ -427,9 +343,6 @@ export default function TestimonialsMarquee({
           ))}
         </div>
 
-        {/* ── Desktop: two offset rows with parallax (hidden below md) ── */}
-
-        {/* Row 1 */}
         <div
           ref={row1Ref}
           className={cn(
@@ -437,7 +350,7 @@ export default function TestimonialsMarquee({
             "gap-[clamp(0.75rem,1.5vw,1.25rem)]",
             "max-lg:overflow-x-auto max-lg:overflow-y-hidden",
             "max-lg:scrollbar-none max-lg:pb-1",
-            "motion-reduce:transform-none!",
+            "motion-reduce:transform-none!"
           )}
         >
           {row1.map((t, i) => (
@@ -445,7 +358,6 @@ export default function TestimonialsMarquee({
           ))}
         </div>
 
-        {/* Row 2 — offset right for asymmetry */}
         <div
           ref={row2Ref}
           className={cn(
@@ -456,7 +368,7 @@ export default function TestimonialsMarquee({
             "max-lg:pl-[clamp(1.5rem,4vw,3rem)]",
             "max-lg:overflow-x-auto max-lg:overflow-y-hidden",
             "max-lg:scrollbar-none max-lg:pb-1",
-            "motion-reduce:transform-none!",
+            "motion-reduce:transform-none!"
           )}
         >
           {row2.map((t, i) => (

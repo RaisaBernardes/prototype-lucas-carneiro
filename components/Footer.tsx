@@ -4,6 +4,7 @@ import { useEffect, useRef, useCallback } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
+import texts from "../app/texts/texts.json";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -37,50 +38,6 @@ interface FooterProps {
   giantName?: string;
   className?: string;
 }
-
-/* ─────────────────────────────────────────────
-   DEFAULT DATA
-   ───────────────────────────────────────────── */
-const defaultColumns: FooterColumn[] = [
-  {
-    title: "Navegação",
-    links: [
-      { label: "Início", href: "#" },
-      { label: "Sobre", href: "#sobre" },
-      { label: "Procedimentos", href: "#procedimentos" },
-      { label: "Depoimentos", href: "#depoimentos" },
-      { label: "Contato", href: "#contato" },
-    ],
-  },
-  {
-    title: "Consultório",
-    links: [
-      { label: "Rua Itapeva, 286 — Cj. 82" },
-      { label: "Bela Vista, São Paulo — SP" },
-      { label: "(11) 3889-0893", href: "tel:+551138890893" },
-    ],
-  },
-  {
-    title: "Credenciais",
-    links: [
-      { label: "CRM SP 231278" },
-      { label: "RQE 136020" },
-      { label: "Membro SBCP" },
-      { label: "Membro ISAPS" },
-    ],
-  },
-];
-
-const defaultSocials = [
-  { platform: "Instagram", href: "https://instagram.com/dr.leandrogregorio" },
-  { platform: "LinkedIn", href: "#" },
-  { platform: "WhatsApp", href: "https://wa.me/551138890893" },
-];
-
-const defaultLegalLinks: FooterLink[] = [
-  { label: "Termos de Uso", href: "#" },
-  { label: "Política de Privacidade", href: "#" },
-];
 
 /* ─────────────────────────────────────────────
    SOCIAL ICONS
@@ -117,7 +74,7 @@ function LogoIcon() {
   return (
     <Image
       src="/images/leandro-gregorio/logo-leandro.webp"
-      alt="Dr. Leandro Gregório"
+      alt={texts.footerSection.logoAlt}
       width={12}
       height={24}
     />
@@ -133,7 +90,7 @@ function FooterNavLink({ href, children }: { href: string; children: React.React
         "group relative inline-block",
         "font-body text-sm font-normal leading-relaxed text-light/55",
         "transition-colors duration-300 hover:text-light",
-        "motion-reduce:transition-none",
+        "motion-reduce:transition-none"
       )}
     >
       {children}
@@ -143,7 +100,7 @@ function FooterNavLink({ href, children }: { href: string; children: React.React
           "origin-right scale-x-0 bg-accent",
           "transition-transform duration-400 ease-spring",
           "group-hover:origin-left group-hover:scale-x-100",
-          "motion-reduce:transition-none",
+          "motion-reduce:transition-none"
         )}
       />
     </a>
@@ -154,16 +111,15 @@ function FooterNavLink({ href, children }: { href: string; children: React.React
    MAIN COMPONENT
    ───────────────────────────────────────────── */
 export default function Footer({
-  brandName = "Dr. Leandro Gregório",
-  brandDescription = "Cirurgia plástica com excelência técnica e atenção personalizada — referência em procedimentos estéticos e reparadores em São Paulo.",
-  columns = defaultColumns,
-  socials = defaultSocials,
-  copyright = `© ${new Date().getFullYear()} Dr. Leandro Gregório. Todos os direitos reservados.`,
-  legalLinks = defaultLegalLinks,
-  giantName = "Leandro Gregório",
+  brandName = texts.footerSection.brandName,
+  brandDescription = texts.footerSection.brandDescription,
+  columns = texts.footerSection.columns,
+  socials = texts.footerSection.socials,
+  copyright = texts.footerSection.copyright,
+  legalLinks = texts.footerSection.legalLinks,
+  giantName = texts.footerSection.giantName,
   className = "",
 }: FooterProps) {
-  /* ── Refs ── */
   const sectionRef = useRef<HTMLElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
   const brandRef = useRef<HTMLDivElement>(null);
@@ -178,7 +134,6 @@ export default function Footer({
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
 
-  /* ── Dynamic font-size: scale giant name to fill container width ── */
   useEffect(() => {
     const name = nameRef.current;
     const wrapper = nameWrapperRef.current;
@@ -213,10 +168,9 @@ export default function Footer({
     };
   }, [giantName]);
 
-  /* ── GSAP Animations ── */
   useEffect(() => {
     const prefersReduced = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
+      "(prefers-reduced-motion: reduce)"
     ).matches;
 
     if (prefersReduced) {
@@ -227,7 +181,6 @@ export default function Footer({
     }
 
     const ctx = gsap.context(() => {
-      /* 1. Card — slide up + fade in */
       const cardTl = gsap.timeline({
         scrollTrigger: {
           trigger: cardRef.current,
@@ -246,7 +199,7 @@ export default function Footer({
       cardTl.from(
         brandRef.current,
         { opacity: 0, y: 24, duration: 0.7, ease: "power2.out" },
-        "-=0.5",
+        "-=0.5"
       );
 
       const cols = colRefs.current.filter(Boolean);
@@ -260,17 +213,16 @@ export default function Footer({
             stagger: { each: 0.08, ease: "power1.in" },
             ease: "power3.out",
           },
-          "-=0.45",
+          "-=0.45"
         );
       }
 
       cardTl.from(
         bottomRef.current,
         { opacity: 0, y: 12, duration: 0.5, ease: "power2.out" },
-        "-=0.3",
+        "-=0.3"
       );
 
-      /* 2. Giant Name — bottom → top reveal */
       if (nameRef.current && nameMaskRef.current) {
         gsap.fromTo(
           nameRef.current,
@@ -285,11 +237,10 @@ export default function Footer({
               start: "top 95%",
               once: true,
             },
-          },
+          }
         );
       }
 
-      /* 3. Scroll-to-top button */
       gsap.to(scrollTopRef.current, {
         opacity: 1,
         duration: 0.5,
@@ -311,42 +262,36 @@ export default function Footer({
       className={cn(
         "relative w-full overflow-hidden bg-deep",
         "px-5 pt-8 md:px-8 md:pt-12 lg:px-10 lg:pt-14",
-        className,
+        className
       )}
     >
-      {/* ── FLOATING CARD ─────────────────────────────────── */}
       <div
         ref={cardRef}
         className={cn(
           "relative mx-auto max-w-[1440px] overflow-hidden",
           "rounded-xl border border-accent/6 bg-card md:rounded-2xl lg:rounded-[28px]",
           "px-6 py-8 md:px-12 md:py-14 lg:px-16 lg:py-[4.5rem]",
-          // Initial state for GSAP (overridden by inline styles on animate)
           "translate-y-10 opacity-0",
-          "motion-reduce:translate-y-0 motion-reduce:opacity-100",
+          "motion-reduce:translate-y-0 motion-reduce:opacity-100"
         )}
       >
-        {/* Subtle top highlight line */}
         <div
           className={cn(
             "pointer-events-none absolute top-0 left-1/2 h-px w-[70%] -translate-x-1/2",
-            "bg-linear-to-r from-transparent via-accent/12 to-transparent",
+            "bg-linear-to-r from-transparent via-accent/12 to-transparent"
           )}
         />
 
-        {/* ── CARD GRID ── */}
         <div
           className={cn(
             "grid items-start",
             "grid-cols-1 gap-8",
             "md:flex-row",
             "min-[860px]:grid-cols-[1.2fr_1fr_1fr] min-[860px]:gap-6",
-            "min-[1100px]:grid-cols-[1.3fr_1fr_1fr_1fr] min-[1100px]:gap-12",
+            "min-[1100px]:grid-cols-[1.3fr_1fr_1fr_1fr] min-[1100px]:gap-12"
           )}
         >
-          {/* ── Left: Brand identity ── */}
           <div ref={brandRef} className="flex flex-col gap-5">
-            {/* Logo */}
             <div className="flex items-center gap-3">
               <div className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-accent">
                 <LogoIcon />
@@ -356,12 +301,10 @@ export default function Footer({
               </span>
             </div>
 
-            {/* Description */}
             <p className="max-w-[340px] font-body text-sm font-normal leading-relaxed text-light/55">
               {brandDescription}
             </p>
 
-            {/* Social icons */}
             <div className="mt-1 flex gap-3">
               {socials.map((s) => (
                 <a
@@ -373,7 +316,7 @@ export default function Footer({
                     "border border-accent/8 text-light/55",
                     "transition-all duration-300 ease-spring",
                     "hover:-translate-y-0.5 hover:border-accent/20 hover:bg-accent/4 hover:text-accent",
-                    "motion-reduce:transition-none",
+                    "motion-reduce:transition-none"
                   )}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -385,7 +328,6 @@ export default function Footer({
             </div>
           </div>
 
-          {/* ── Right: Link columns ── */}
           {columns.map((col, i) => (
             <div
               key={col.title}
@@ -393,8 +335,7 @@ export default function Footer({
                 colRefs.current[i] = el;
               }}
               className={cn(
-                // Hide "Consultório" column between 860–1100px
-                i === 1 && "min-[860px]:hidden min-[1100px]:block",
+                i === 1 && "min-[860px]:hidden min-[1100px]:block"
               )}
             >
               <span className="mb-5 block font-body text-sm font-semibold tracking-tight text-light">
@@ -419,14 +360,13 @@ export default function Footer({
           ))}
         </div>
 
-        {/* ── Card Bottom Bar ── */}
         <div
           ref={bottomRef}
           className={cn(
             "flex flex-wrap items-center justify-between gap-4",
             "mt-10 border-t border-accent/8 pt-6",
             "md:mt-14 md:pt-7 lg:mt-16 lg:pt-8",
-            "max-md:flex-col max-md:items-start max-md:gap-3",
+            "max-md:flex-col max-md:items-start max-md:gap-3"
           )}
         >
           <p className="font-body text-xs font-normal tracking-wide text-accent/30">
@@ -440,7 +380,7 @@ export default function Footer({
                 className={cn(
                   "font-body text-xs font-normal tracking-wide text-accent/30",
                   "transition-colors duration-300 hover:text-accent",
-                  "motion-reduce:transition-none",
+                  "motion-reduce:transition-none"
                 )}
               >
                 {link.label}
@@ -450,7 +390,6 @@ export default function Footer({
         </div>
       </div>
 
-      {/* ── GIANT NAME — below the card ────────────────── */}
       <div
         ref={nameWrapperRef}
         className="mx-auto max-w-[1440px] overflow-hidden px-5 pt-8 md:px-8 lg:px-10"
@@ -464,9 +403,9 @@ export default function Footer({
             className={cn(
               "m-0 w-full select-none whitespace-nowrap text-center p-0",
               "font-display font-light leading-[0.85] tracking-[-0.04em]",
-              "text-[10vw]", // fallback — JS overrides dynamically
+              "text-[10vw]",
               "opacity-0 motion-reduce:opacity-100",
-              "max-md:leading-[0.9] max-md:tracking-[-0.03em]",
+              "max-md:leading-[0.9] max-md:tracking-[-0.03em]"
             )}
             style={{
               background:
@@ -482,35 +421,29 @@ export default function Footer({
         </div>
       </div>
 
-      {/* ── Scroll to top ──────────────────────────────── */}
       <button
         ref={scrollTopRef}
         onClick={handleScrollTop}
         type="button"
-        aria-label="Voltar ao topo"
+        aria-label={texts.footerSection.scrollTopAriaLabel}
         className={cn(
-          // Mobile: centered below content
           "relative mx-auto mt-4 flex items-center gap-2",
-          // Desktop: pinned bottom-right
           "md:absolute md:bottom-8 md:right-8 md:mx-0 md:mt-0",
-          // Typography
           "font-body text-[0.625rem] font-semibold uppercase tracking-[0.2em] text-accent/30",
-          // Interaction
           "cursor-pointer border-none bg-transparent p-2",
           "transition-colors duration-300 hover:text-accent",
-          // Initial hidden for GSAP
           "opacity-0 motion-reduce:opacity-100",
-          "z-2",
+          "z-2"
         )}
       >
-        Topo
+        {texts.footerSection.scrollTopLabel}
         <span
           className={cn(
             "inline-flex size-7.5 items-center justify-center",
             "rounded-md border border-accent/8",
             "transition-all duration-300 ease-spring",
             "group-hover:border-accent",
-            "motion-reduce:transition-none",
+            "motion-reduce:transition-none"
           )}
         >
           <svg

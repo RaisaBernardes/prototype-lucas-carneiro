@@ -2,6 +2,7 @@
 
 import { useRef, useEffect } from "react";
 import gsap from "gsap";
+import texts from "../app/texts/texts.json";
 
 interface SplashScreenProps {
   onComplete: () => void;
@@ -17,7 +18,7 @@ function SplitWord({ word, charClass }: { word: string; charClass: string }) {
           style={{
             display: "inline-block",
             willChange: "transform",
-            transform: "translateY(115%)", // ← estado inicial no JSX
+            transform: "translateY(115%)",
           }}
         >
           {char}
@@ -30,6 +31,9 @@ function SplitWord({ word, charClass }: { word: string; charClass: string }) {
 export default function SplashScreen({ onComplete }: SplashScreenProps) {
   const splashRef = useRef<HTMLDivElement>(null);
 
+  const splash = texts.splashScreen;
+  const showLogo = Boolean(splash.logo?.enabled && splash.logo?.src);
+
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
@@ -41,7 +45,6 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
     }
 
     const ctx = gsap.context(() => {
-      // gsap.set ainda aqui como garantia, mas o CSS inline já previne o flash
       gsap.set(".char-name", { y: "115%" });
       gsap.set([".splash-label", ".splash-logo", ".splash-corner"], {
         opacity: 0,
@@ -77,11 +80,13 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
         1.18
       );
 
-      tl.to(
-        ".splash-logo",
-        { opacity: 1, duration: 0.7, ease: "power2.out" },
-        1.3
-      );
+      if (showLogo) {
+        tl.to(
+          ".splash-logo",
+          { opacity: 1, duration: 0.7, ease: "power2.out" },
+          1.3
+        );
+      }
 
       tl.to(
         ".splash-corner",
@@ -107,7 +112,7 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
     }, splashRef);
 
     return () => ctx.revert();
-  }, [onComplete]);
+  }, [onComplete, showLogo]);
 
   return (
     <div
@@ -116,20 +121,17 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
       style={{ backgroundColor: "var(--color-ink)" }}
     >
       <div className="flex flex-col items-center select-none">
-
-        {/* Estado inicial: scaleX(0) e transformOrigin inline */}
         <div
           className="splash-hairline mb-7"
           style={{
             width: "clamp(72px, 10vw, 120px)",
             height: "1px",
             backgroundColor: "var(--color-accent)",
-            transform: "scaleX(0)",           // ← invisível desde o início
-            transformOrigin: "center center",  // ← consistente com o gsap.set
+            transform: "scaleX(0)",
+            transformOrigin: "center center",
           }}
         />
 
-        {/* Estado inicial: opacity 0 inline */}
         <div
           className="splash-label mb-2"
           style={{
@@ -138,25 +140,25 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
             letterSpacing: "0.52em",
             color: "var(--color-accent)",
             textTransform: "uppercase",
-            opacity: 0, // ← invisível desde o início
+            opacity: 0,
           }}
         >
-          LEANDRO GREGÓRIO
+          {splash.name}
         </div>
 
-        {/* Estado inicial: opacity 0 inline */}
-        <img
-          src="/images/leandro-gregorio/logo-leandro.webp"
-          alt="Leandro Gregório"
-          className="splash-logo mt-5"
-          style={{
-            width: "clamp(16px, 8vw, 16px)",
-            height: "auto",
-            filter: "brightness(0) invert(1)",
-            opacity: 0, // ← invisível desde o início
-          }}
-        />
-
+        {showLogo && (
+          <img
+            src={splash.logo.src}
+            alt={splash.logo.alt}
+            className="splash-logo mt-5"
+            style={{
+              width: "clamp(16px, 8vw, 16px)",
+              height: "auto",
+              filter: "brightness(0) invert(1)",
+              opacity: 0,
+            }}
+          />
+        )}
       </div>
     </div>
   );

@@ -3,26 +3,19 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import texts from "../app/texts/texts.json";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Types
 // ─────────────────────────────────────────────────────────────────────────────
 
 interface ScrollTextRevealProps {
-  /** The text revealed word by word on scroll */
-  text: string;
   /** Section background color */
   bgColor?: string;
   /** Starting color of every word (before reveal) */
   colorFrom?: string;
   /** Final color of regular words after reveal */
   colorTo?: string;
-  /**
-   * Words that animate to `accentColor` instead of `colorTo`.
-   * Matching is case-insensitive and ignores trailing punctuation —
-   * "história" also matches "história." in the text.
-   */
-  accentWords?: string[];
   /** Final color for accent words — default #2B3B3F */
   accentColor?: string;
   /** Font weight for accent words — default 700 */
@@ -70,11 +63,9 @@ function isAccent(word: string, accentWords: string[]): boolean {
 let hasInitialized = false;
 
 export default function ScrollTextReveal({
-  text,
   bgColor = "#FAFAF8",
   colorFrom = "rgba(13,25,33,0.18)",
   colorTo = "rgba(13,25,33,0.45)",
-  accentWords = [],
   accentColor = "#2B3B3F",
   accentFontWeight = 700,
   fontFamily = "var(--font-body), system-ui, sans-serif",
@@ -88,6 +79,9 @@ export default function ScrollTextReveal({
   contentMaxWidth = "1320px",
 }: ScrollTextRevealProps) {
   const containerRef = useRef<HTMLElement>(null);
+
+  const text = texts.scrollTextReveal.text;
+  const accentWords = texts.scrollTextReveal.accentWords;
 
   useEffect(() => {
     if (hasInitialized) return;
@@ -143,10 +137,6 @@ export default function ScrollTextReveal({
       className="relative h-dvh overflow-hidden flex items-center"
       style={{ background: bgColor }}
     >
-      {/* ── Text container ─────────────────────────────────────────────────
-       *  contentPaddingLeft shifts the block rightward.
-       *  The right padding stays fixed so long lines don't bleed off-screen.
-       * ─────────────────────────────────────────────────────────────────── */}
       <div
         style={{
           width: "100%",

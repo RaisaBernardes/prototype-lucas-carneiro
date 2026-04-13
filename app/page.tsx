@@ -55,11 +55,9 @@ export default function Home() {
         <HeroSection imageSrc="/images/leandro-gregorio/hero1.png" />
         <AboutSection />
         <ScrollTextReveal
-          text="Eu sei o que é sentir que algo não reflete quem você é por dentro. Cada paciente que entra no meu consultório traz muito mais do que um desejo estético — traz uma história. E é a partir dela que o trabalho verdadeiro começa."
           bgColor="#FAFAF8"
           colorFrom="rgba(13,25,33,0.18)"
           colorTo="rgba(13,25,33,0.45)"
-          accentWords={["não", "reflete", "traz", "uma", "história.", "trabalho", "verdadeiro", "começa."]}
           accentColor="#2B3B3F"
           accentFontWeight={700}
           fontFamily="var(--font-body), system-ui, sans-serif"

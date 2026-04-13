@@ -1,4 +1,5 @@
 import Image from "next/image";
+import texts from "../app/texts/texts.json";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Types
@@ -10,24 +11,15 @@ interface CredentialItem {
 }
 
 interface HeroSectionProps {
-  /** Path to the doctor's photo — optimised via next/image */
   imageSrc: string;
   imageAlt?: string;
-  /** Hero headline — accepts JSX so line breaks are easy */
   headline?: React.ReactNode;
-  /** Short sub-paragraph under the headline */
   body?: string;
-  /** Label shown on the primary CTA button */
   ctaLabel?: string;
-  /** Where the CTA points – use "#contato" or a page route */
   ctaHref?: string;
-  /** Small credential strip rendered at the bottom of the left column */
   credentials?: CredentialItem[];
-  /** Pull-quote overlaid on the image */
   quote?: string;
-  /** Attribution line for the quote */
   quoteAttribution?: string;
-  /** Eyebrow label e.g. "Cirurgia Plástica · Consolação, São Paulo" */
   eyebrow?: string;
 }
 
@@ -75,14 +67,10 @@ function CredentialPair({ label, value }: CredentialItem) {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// Default prop values — mirrors the Dr. Leandro Gregório project
+// Destructure only the hero section from the shared texts file
 // ─────────────────────────────────────────────────────────────────────────────
 
-const DEFAULT_CREDENTIALS: CredentialItem[] = [
-  { label: "CRM-SP", value: "231278" },
-  { label: "RQE", value: "136020" },
-  { label: "Membro", value: "SBCP · ISAPS" },
-];
+const t = texts.hero;
 
 // ─────────────────────────────────────────────────────────────────────────────
 // HeroSection
@@ -90,19 +78,15 @@ const DEFAULT_CREDENTIALS: CredentialItem[] = [
 
 export default function HeroSection({
   imageSrc,
-  imageAlt = "Dr. Leandro Gregório — Cirurgião Plástico",
-  headline = (
-    <>
-      Leandro Gregório
-    </>
-  ),
-  body = "Cirurgia plástica com precisão, critério e respeito absoluto pela sua identidade.",
-  ctaLabel = "Agendar conversa",
-  ctaHref = "#contato",
-  credentials = DEFAULT_CREDENTIALS,
-  quote = "Cada cirurgia é um encontro entre confiança, responsabilidade e propósito.",
-  quoteAttribution = "Dr. Leandro Gregório — Cirurgião Plástico",
-  eyebrow = "Cirurgia Plástica",
+  imageAlt         = t.imageAlt,
+  headline         = t.headline,
+  body             = t.body,
+  ctaLabel         = t.ctaLabel,
+  ctaHref          = t.ctaHref,
+  credentials      = t.credentials,
+  quote            = t.quote,
+  quoteAttribution = t.quoteAttribution,
+  eyebrow          = t.eyebrow,
 }: HeroSectionProps) {
   return (
     <>
@@ -126,17 +110,11 @@ export default function HeroSection({
         className="hero-root relative flex flex-col md:flex-row min-h-svh min-h-[600px] w-full"
         aria-label="Hero"
       >
-        {/*
-         * ── IMAGE COLUMN ─────────────────────────────────────────────────────
-         * On mobile: appears first (natural DOM order), fixed height.
-         * On desktop: takes the remaining 73 % on the right side.
-         */}
+        {/* ── IMAGE COLUMN ─────────────────────────────────────────────── */}
         <div
           className={[
             "relative overflow-hidden",
-            // Mobile: fixed height at the top
             "h-[65vw] shrink-0",
-            // Desktop: flexible right column
             "md:h-auto md:flex-1 md:order-2",
           ].join(" ")}
           style={{ background: "var(--color-button)" }}
@@ -151,7 +129,6 @@ export default function HeroSection({
             style={{ objectPosition: "70% top" }}
           />
 
-          {/* Pull-quote overlay — bottom-left of image */}
           {quote && (
             <div
               className="absolute left-5 bottom-5 z-10 max-w-[180px]"
@@ -185,7 +162,6 @@ export default function HeroSection({
             </div>
           )}
 
-          {/* Decorative section index */}
           <span
             className="absolute bottom-7 right-7 select-none"
             aria-hidden
@@ -201,11 +177,7 @@ export default function HeroSection({
           </span>
         </div>
 
-        {/*
-         * ── TEXT COLUMN ──────────────────────────────────────────────────────
-         * On mobile: appears second (below the image).
-         * On desktop: 40 % width on the left side.
-         */}
+        {/* ── TEXT COLUMN ──────────────────────────────────────────────── */}
         <div
           className={[
             "relative z-10 flex flex-col justify-center",
@@ -215,15 +187,10 @@ export default function HeroSection({
           ].join(" ")}
           style={{ background: "var(--color-offwhite)" }}
         >
-          {/* Eyebrow */}
           <div className="mb-10 flex items-center gap-2.5">
             <span
               className="block shrink-0"
-              style={{
-                width: 22,
-                height: 1,
-                background: "var(--color-accent)",
-              }}
+              style={{ width: 22, height: 1, background: "var(--color-accent)" }}
               aria-hidden
             />
             <span
@@ -239,7 +206,6 @@ export default function HeroSection({
             </span>
           </div>
 
-          {/* Headline */}
           <h1
             className="mb-5 leading-[1.08]"
             style={{
@@ -253,7 +219,6 @@ export default function HeroSection({
             {headline}
           </h1>
 
-          {/* Body */}
           <p
             className="mb-9 max-w-[300px]"
             style={{
@@ -267,7 +232,6 @@ export default function HeroSection({
             {body}
           </p>
 
-          {/* CTA */}
           <a
             href={ctaHref}
             className="self-start rounded-xs transition-opacity hover:opacity-95 focus-visible:outline focus-visible:outline-offset-2"
@@ -289,7 +253,6 @@ export default function HeroSection({
             {ctaLabel}
           </a>
 
-          {/* Credential strip — pinned to bottom of column */}
           {credentials.length > 0 && (
             <div
               className="mt-auto flex flex-wrap items-center gap-4 pt-12"
@@ -308,16 +271,3 @@ export default function HeroSection({
     </>
   );
 }
-
-// ─────────────────────────────────────────────────────────────────────────────
-// Usage example (delete before shipping):
-//
-//   import HeroSection from "@/components/HeroSection";
-//   import drPhoto from "@/public/images/dr-leandro.jpg";
-//
-//   export default function Home() {
-//     return <HeroSection imageSrc={drPhoto.src} />;
-//   }
-//
-// All props have sensible defaults — just pass `imageSrc` to get started.
-// ─────────────────────────────────────────────────────────────────────────────
