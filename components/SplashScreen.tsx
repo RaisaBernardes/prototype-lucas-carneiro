@@ -117,29 +117,24 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
   return (
     <div
       ref={splashRef}
-      className="fixed inset-0 z-[100] flex items-center justify-center"
-      style={{ backgroundColor: "var(--color-ink)" }}
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-ink"
     >
       <div className="flex flex-col items-center select-none">
         <div
-          className="splash-hairline mb-7"
+          className="splash-hairline mb-7 bg-accent"
           style={{
             width: "clamp(72px, 10vw, 120px)",
             height: "1px",
-            backgroundColor: "var(--color-accent)",
             transform: "scaleX(0)",
             transformOrigin: "center center",
           }}
         />
 
         <div
-          className="splash-label mb-2"
+          className="splash-label mb-2 font-body uppercase text-accent"
           style={{
-            fontFamily: "var(--font-body)",
             fontSize: "9px",
             letterSpacing: "0.52em",
-            color: "var(--color-accent)",
-            textTransform: "uppercase",
             opacity: 0,
           }}
         >

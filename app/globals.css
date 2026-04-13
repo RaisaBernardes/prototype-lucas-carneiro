@@ -1,20 +1,10 @@
-/* globals.css */
 @import "tailwindcss";
 
-/* ══════════════════════════════════════════════════════════════════════════
-   THEME TOKENS — Change colors/fonts here to update the entire site.
-   Every value below generates Tailwind utilities automatically.
-   Example: --color-accent → bg-accent, text-accent, border-accent/50
-            --font-display → font-display
-   ══════════════════════════════════════════════════════════════════════════ */
-
 @theme {
-  /* ── Typography ─────────────────────────────────────────────────────── */
   --font-display: var(--font-fraunces), Georgia, serif;
   --font-serif: var(--font-cormorant, "Cormorant Garamond"), Georgia, serif;
   --font-body: var(--font-work-sans), system-ui, sans-serif;
 
-  /* ── Primary Palette (Light Surfaces) ───────────────────────────────── */
   --color-bg: #FAFAF8;
   --color-ink: #0D1921;
   --color-ink-mid: #555550;
@@ -25,23 +15,56 @@
   --color-green: #3d5a45;
   --color-white: #FFFFFF;
 
-  /* ── Dark Palette (Footer, Cards, CTA Sections) ─────────────────────── */
   --color-deep: #0d1921;
   --color-card: #132529;
   --color-card-alt: #132529;
   --color-light: #e8ede9;
   --color-button: #2B3B3F;
 
-  /* ── Animation ──────────────────────────────────────────────────────── */
+  --color-overlay-strong: rgba(255, 255, 255, 0.82);
+  --color-overlay-medium: rgba(255, 255, 255, 0.62);
+  --color-overlay-subtle: rgba(255, 255, 255, 0.18);
+  --color-on-accent-soft: rgba(38, 38, 38, 0.8);
+
+  --color-nav-bg-opaque: rgba(250, 250, 248, 0.97);
+  --color-nav-link-on-image: rgba(255, 255, 255, 0.78);
+  --color-nav-cta-on-image: rgba(255, 255, 255, 0.9);
+  --color-nav-divider-on-image: rgba(255, 255, 255, 0.2);
+  --color-nav-cta-border-on-image: rgba(255, 255, 255, 0.5);
+
+  --color-text-reveal-from: rgba(13, 25, 33, 0.18);
+  --color-text-reveal-to: rgba(13, 25, 33, 0.45);
+
+  --color-story-overlay: rgba(0, 0, 0, 1);
+
+  --shadow-testimonial-hover: 0 4px 32px rgba(25, 25, 23, 0.04);
+
   --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* ── Legacy alias ────────────────────────────────────────────────────── */
 @utility font-cormorant {
   font-family: var(--font-serif);
 }
 
-/* ── Base Styles ─────────────────────────────────────────────────────── */
+@utility text-giant-name-gradient {
+  background: linear-gradient(
+    to bottom,
+    var(--color-light) 0%,
+    rgba(88, 147, 146, 0.45) 5%,
+    rgba(88, 121, 111, 0.12) 68%,
+    rgba(57, 70, 67, 0.03) 85%,
+    transparent 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+@utility shadow-testimonial-hover {
+  box-shadow: var(--shadow-testimonial-hover);
+}
+
 body {
   font-family: var(--font-body);
   background-color: var(--color-bg);

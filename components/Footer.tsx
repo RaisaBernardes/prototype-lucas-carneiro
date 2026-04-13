@@ -8,16 +8,10 @@ import texts from "../app/texts/texts.json";
 
 gsap.registerPlugin(ScrollTrigger);
 
-/* ─────────────────────────────────────────────
-   UTILITY
-   ───────────────────────────────────────────── */
 function cn(...classes: (string | false | null | undefined)[]) {
   return classes.filter(Boolean).join(" ");
 }
 
-/* ─────────────────────────────────────────────
-   TYPES
-   ───────────────────────────────────────────── */
 interface FooterLink {
   label: string;
   href?: string;
@@ -39,9 +33,6 @@ interface FooterProps {
   className?: string;
 }
 
-/* ─────────────────────────────────────────────
-   SOCIAL ICONS
-   ───────────────────────────────────────────── */
 function SocialIcon({ platform }: { platform: string }) {
   const iconClass = "size-4 fill-current";
 
@@ -69,7 +60,6 @@ function SocialIcon({ platform }: { platform: string }) {
   }
 }
 
-/* ─── Logo icon — stylised "LG" monogram ─── */
 function LogoIcon() {
   return (
     <Image
@@ -81,7 +71,6 @@ function LogoIcon() {
   );
 }
 
-/* ─── Animated link with underline on hover ─── */
 function FooterNavLink({ href, children }: { href: string; children: React.ReactNode }) {
   return (
     <a
@@ -107,9 +96,6 @@ function FooterNavLink({ href, children }: { href: string; children: React.React
   );
 }
 
-/* ─────────────────────────────────────────────
-   MAIN COMPONENT
-   ───────────────────────────────────────────── */
 export default function Footer({
   brandName = texts.footerSection.brandName,
   brandDescription = texts.footerSection.brandDescription,
@@ -260,19 +246,14 @@ export default function Footer({
     <footer
       ref={sectionRef}
       className={cn(
-        "relative w-full overflow-hidden bg-deep",
-        "px-5 pt-8 md:px-8 md:pt-12 lg:px-10 lg:pt-14",
+        "relative w-full overflow-hidden bg-deep px-5 pt-8 md:px-8 md:pt-12 lg:px-10 lg:pt-14",
         className
       )}
     >
       <div
         ref={cardRef}
         className={cn(
-          "relative mx-auto max-w-[1440px] overflow-hidden",
-          "rounded-xl border border-accent/6 bg-card md:rounded-2xl lg:rounded-[28px]",
-          "px-6 py-8 md:px-12 md:py-14 lg:px-16 lg:py-[4.5rem]",
-          "translate-y-10 opacity-0",
-          "motion-reduce:translate-y-0 motion-reduce:opacity-100"
+          "relative mx-auto max-w-[1440px] overflow-hidden rounded-xl border border-accent/6 bg-card px-6 py-8 translate-y-10 opacity-0 md:rounded-2xl md:px-12 md:py-14 lg:rounded-[28px] lg:px-16 lg:py-[4.5rem] motion-reduce:translate-y-0 motion-reduce:opacity-100"
         )}
       >
         <div
@@ -284,8 +265,7 @@ export default function Footer({
 
         <div
           className={cn(
-            "grid items-start",
-            "grid-cols-1 gap-8",
+            "grid items-start grid-cols-1 gap-8",
             "md:flex-row",
             "min-[860px]:grid-cols-[1.2fr_1fr_1fr] min-[860px]:gap-6",
             "min-[1100px]:grid-cols-[1.3fr_1fr_1fr_1fr] min-[1100px]:gap-12"
@@ -311,9 +291,7 @@ export default function Footer({
                   key={s.platform}
                   href={s.href}
                   className={cn(
-                    "flex items-center justify-center",
-                    "size-9.5 rounded-lg",
-                    "border border-accent/8 text-light/55",
+                    "flex size-9.5 items-center justify-center rounded-lg border border-accent/8 text-light/55",
                     "transition-all duration-300 ease-spring",
                     "hover:-translate-y-0.5 hover:border-accent/20 hover:bg-accent/4 hover:text-accent",
                     "motion-reduce:transition-none"
@@ -334,9 +312,7 @@ export default function Footer({
               ref={(el) => {
                 colRefs.current[i] = el;
               }}
-              className={cn(
-                i === 1 && "min-[860px]:hidden min-[1100px]:block"
-              )}
+              className={cn(i === 1 && "min-[860px]:hidden min-[1100px]:block")}
             >
               <span className="mb-5 block font-body text-sm font-semibold tracking-tight text-light">
                 {col.title}
@@ -345,9 +321,7 @@ export default function Footer({
                 {col.links.map((link) => (
                   <li key={link.label} className="mb-3.5">
                     {link.href ? (
-                      <FooterNavLink href={link.href}>
-                        {link.label}
-                      </FooterNavLink>
+                      <FooterNavLink href={link.href}>{link.label}</FooterNavLink>
                     ) : (
                       <span className="font-body text-sm font-normal leading-relaxed text-light/55">
                         {link.label}
@@ -363,8 +337,7 @@ export default function Footer({
         <div
           ref={bottomRef}
           className={cn(
-            "flex flex-wrap items-center justify-between gap-4",
-            "mt-10 border-t border-accent/8 pt-6",
+            "mt-10 flex flex-wrap items-center justify-between gap-4 border-t border-accent/8 pt-6",
             "md:mt-14 md:pt-7 lg:mt-16 lg:pt-8",
             "max-md:flex-col max-md:items-start max-md:gap-3"
           )}
@@ -377,11 +350,7 @@ export default function Footer({
               <a
                 key={link.label}
                 href={link.href || "#"}
-                className={cn(
-                  "font-body text-xs font-normal tracking-wide text-accent/30",
-                  "transition-colors duration-300 hover:text-accent",
-                  "motion-reduce:transition-none"
-                )}
+                className="font-body text-xs font-normal tracking-wide text-accent/30 transition-colors duration-300 hover:text-accent motion-reduce:transition-none"
               >
                 {link.label}
               </a>
@@ -401,19 +370,11 @@ export default function Footer({
           <h2
             ref={nameRef}
             className={cn(
-              "m-0 w-full select-none whitespace-nowrap text-center p-0",
-              "font-display font-light leading-[0.85] tracking-[-0.04em]",
-              "text-[10vw]",
+              "text-giant-name-gradient m-0 w-full select-none whitespace-nowrap p-0 text-center",
+              "font-display text-[10vw] font-light leading-[0.85] tracking-[-0.04em]",
               "opacity-0 motion-reduce:opacity-100",
               "max-md:leading-[0.9] max-md:tracking-[-0.03em]"
             )}
-            style={{
-              background:
-                "linear-gradient(to bottom, var(--color-light) 0%, rgba(88,147,146,0.45) 5%, rgba(88,121,111,0.12) 68%, rgba(57,70,67,0.03) 85%, transparent 100%)",
-              WebkitBackgroundClip: "text",
-              backgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-            }}
             aria-label={giantName}
           >
             {giantName}
@@ -427,20 +388,18 @@ export default function Footer({
         type="button"
         aria-label={texts.footerSection.scrollTopAriaLabel}
         className={cn(
-          "relative mx-auto mt-4 flex items-center gap-2",
-          "md:absolute md:bottom-8 md:right-8 md:mx-0 md:mt-0",
+          "relative z-2 mx-auto mt-4 flex items-center gap-2 bg-transparent p-2",
+          "cursor-pointer border-none",
           "font-body text-[0.625rem] font-semibold uppercase tracking-[0.2em] text-accent/30",
-          "cursor-pointer border-none bg-transparent p-2",
           "transition-colors duration-300 hover:text-accent",
           "opacity-0 motion-reduce:opacity-100",
-          "z-2"
+          "md:absolute md:right-8 md:bottom-8 md:mx-0 md:mt-0"
         )}
       >
         {texts.footerSection.scrollTopLabel}
         <span
           className={cn(
-            "inline-flex size-7.5 items-center justify-center",
-            "rounded-md border border-accent/8",
+            "inline-flex size-7.5 items-center justify-center rounded-md border border-accent/8",
             "transition-all duration-300 ease-spring",
             "group-hover:border-accent",
             "motion-reduce:transition-none"

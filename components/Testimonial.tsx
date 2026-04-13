@@ -7,16 +7,10 @@ import texts from "../app/texts/texts.json";
 
 gsap.registerPlugin(ScrollTrigger);
 
-/* ─────────────────────────────────────────────
-   cn() — lightweight class merger
-   ───────────────────────────────────────────── */
 function cn(...classes: (string | false | null | undefined)[]) {
   return classes.filter(Boolean).join(" ");
 }
 
-/* ─────────────────────────────────────────────
-   TYPES
-   ───────────────────────────────────────────── */
 interface Testimonial {
   quote: string;
   name: string;
@@ -32,9 +26,6 @@ interface TestimonialsMarqueeProps {
   className?: string;
 }
 
-/* ─────────────────────────────────────────────
-   TESTIMONIAL CARD
-   ───────────────────────────────────────────── */
 function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
   return (
     <div
@@ -52,17 +43,16 @@ function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
         "cursor-default overflow-hidden",
         "transition-[border-color,box-shadow] duration-400",
         "ease-spring",
-        "hover:border-ink/14 hover:shadow-[0_4px_32px_rgba(25,25,23,0.04)]",
+        "hover:border-ink/14 hover:shadow-testimonial-hover",
         "motion-reduce:opacity-100! motion-reduce:translate-y-0!",
         "motion-reduce:rotate-0! motion-reduce:transition-none!"
       )}
     >
       <span
         className={cn(
-          "block pointer-events-none select-none",
-          "font-serif text-5xl max-md:text-4xl",
-          "font-light leading-none",
-          "text-green/30 mb-2"
+          "mb-2 block select-none pointer-events-none",
+          "font-serif text-5xl font-light leading-none text-green/30",
+          "max-md:text-4xl"
         )}
         aria-hidden="true"
       >
@@ -71,38 +61,22 @@ function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
 
       <blockquote
         className={cn(
-          "font-serif italic",
-          "text-[clamp(0.9375rem,1.2vw,1.0625rem)]",
-          "max-md:text-[0.9375rem]",
-          "font-normal leading-[1.6]",
-          "text-ink/75",
-          "m-0 flex-grow"
+          "m-0 flex-grow font-serif text-[clamp(0.9375rem,1.2vw,1.0625rem)] font-normal italic leading-[1.6] text-ink/75",
+          "max-md:text-[0.9375rem]"
         )}
       >
         {testimonial.quote}
       </blockquote>
 
       <div className="mt-6 pt-4">
-        <div className="w-6 h-px bg-green/40 mb-3" />
+        <div className="mb-3 h-px w-6 bg-green/40" />
 
-        <p
-          className={cn(
-            "font-body text-xs font-semibold",
-            "tracking-[0.1em] uppercase",
-            "text-ink m-0"
-          )}
-        >
+        <p className="m-0 font-body text-xs font-semibold uppercase tracking-[0.1em] text-ink">
           {testimonial.name}
         </p>
 
         {testimonial.date && (
-          <p
-            className={cn(
-              "font-body text-[0.625rem] font-normal",
-              "tracking-[0.06em]",
-              "text-ink/40 mt-1 mb-0"
-            )}
-          >
+          <p className="mt-1 mb-0 font-body text-[0.625rem] font-normal tracking-[0.06em] text-ink/40">
             {testimonial.date}
           </p>
         )}
@@ -111,9 +85,6 @@ function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
   );
 }
 
-/* ─────────────────────────────────────────────
-   MAIN COMPONENT
-   ───────────────────────────────────────────── */
 export default function TestimonialsMarquee({
   label = texts.testimonialsMarquee.label,
   title = texts.testimonialsMarquee.title,
@@ -282,62 +253,33 @@ export default function TestimonialsMarquee({
     <section
       ref={sectionRef}
       className={cn(
-        "w-full bg-bg overflow-hidden",
-        "py-[clamp(5rem,10vw,8rem)]",
-        "max-md:py-[clamp(3rem,8vw,5rem)]",
+        "w-full overflow-hidden bg-bg py-[clamp(5rem,10vw,8rem)] max-md:py-[clamp(3rem,8vw,5rem)]",
         className
       )}
     >
       <div
         ref={headerRef}
-        className={cn(
-          "max-w-[1440px] mx-auto",
-          "mb-[clamp(3rem,6vw,5rem)]",
-          "px-[clamp(1.25rem,3vw,2.5rem)]"
-        )}
+        className="mx-auto mb-[clamp(3rem,6vw,5rem)] max-w-[1440px] px-[clamp(1.25rem,3vw,2.5rem)]"
       >
         <div className="max-w-[680px]">
           <span
             ref={labelRef}
-            className={cn(
-              "block",
-              "font-body text-[0.6875rem] font-medium",
-              "tracking-[0.25em] uppercase",
-              "text-ink/40 mb-4",
-              "motion-reduce:opacity-100!"
-            )}
+            className="mb-4 block font-body text-[0.6875rem] font-medium uppercase tracking-[0.25em] text-ink/40 motion-reduce:opacity-100!"
           >
             {label}
           </span>
 
           <h2
             ref={titleRef}
-            className={cn(
-              "font-display text-[clamp(2.5rem,5.5vw,4.5rem)]",
-              "font-light leading-[1.08] tracking-[-0.03em]",
-              "text-ink m-0",
-              "motion-reduce:opacity-100!"
-            )}
+            className="m-0 font-display text-[clamp(2.5rem,5.5vw,4.5rem)] font-light leading-[1.08] tracking-[-0.03em] text-ink motion-reduce:opacity-100!"
           >
-            {title}{" "}
-            <em className="italic font-display text-green">{titleAccent}</em>
+            {title} <em className="font-display italic text-green">{titleAccent}</em>
           </h2>
         </div>
       </div>
 
-      <div
-        className={cn(
-          "max-w-[1440px] mx-auto",
-          "px-[clamp(1.25rem,3vw,2.5rem)]",
-          "flex flex-col",
-          "gap-[clamp(0.75rem,1.5vw,1.25rem)]",
-          "max-md:gap-0"
-        )}
-      >
-        <div
-          ref={mobileStackRef}
-          className="flex flex-col gap-3 md:hidden"
-        >
+      <div className="mx-auto flex max-w-[1440px] flex-col gap-[clamp(0.75rem,1.5vw,1.25rem)] px-[clamp(1.25rem,3vw,2.5rem)] max-md:gap-0">
+        <div ref={mobileStackRef} className="flex flex-col gap-3 md:hidden">
           {testimonials.map((t, i) => (
             <TestimonialCard key={i} testimonial={t} />
           ))}
@@ -345,13 +287,7 @@ export default function TestimonialsMarquee({
 
         <div
           ref={row1Ref}
-          className={cn(
-            "hidden md:flex will-change-transform",
-            "gap-[clamp(0.75rem,1.5vw,1.25rem)]",
-            "max-lg:overflow-x-auto max-lg:overflow-y-hidden",
-            "max-lg:scrollbar-none max-lg:pb-1",
-            "motion-reduce:transform-none!"
-          )}
+          className="hidden gap-[clamp(0.75rem,1.5vw,1.25rem)] will-change-transform max-lg:overflow-x-auto max-lg:overflow-y-hidden max-lg:scrollbar-none max-lg:pb-1 motion-reduce:transform-none! md:flex"
         >
           {row1.map((t, i) => (
             <TestimonialCard key={i} testimonial={t} />
@@ -360,16 +296,7 @@ export default function TestimonialsMarquee({
 
         <div
           ref={row2Ref}
-          className={cn(
-            "hidden md:flex will-change-transform",
-            "gap-[clamp(0.75rem,1.5vw,1.25rem)]",
-            "pl-[clamp(3rem,10vw,10rem)]",
-            "max-[1200px]:pl-[clamp(2rem,6vw,5rem)]",
-            "max-lg:pl-[clamp(1.5rem,4vw,3rem)]",
-            "max-lg:overflow-x-auto max-lg:overflow-y-hidden",
-            "max-lg:scrollbar-none max-lg:pb-1",
-            "motion-reduce:transform-none!"
-          )}
+          className="hidden gap-[clamp(0.75rem,1.5vw,1.25rem)] pl-[clamp(3rem,10vw,10rem)] will-change-transform max-[1200px]:pl-[clamp(2rem,6vw,5rem)] max-lg:overflow-x-auto max-lg:overflow-y-hidden max-lg:scrollbar-none max-lg:pb-1 max-lg:pl-[clamp(1.5rem,4vw,3rem)] motion-reduce:transform-none! md:flex"
         >
           {row2.map((t, i) => (
             <TestimonialCard key={i} testimonial={t} />

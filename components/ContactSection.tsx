@@ -7,16 +7,10 @@ import texts from "../app/texts/texts.json";
 
 gsap.registerPlugin(ScrollTrigger);
 
-/* ─────────────────────────────────────────────
-   cn() — lightweight class merger
-   ───────────────────────────────────────────── */
 function cn(...classes: (string | false | null | undefined)[]) {
   return classes.filter(Boolean).join(" ");
 }
 
-/* ─────────────────────────────────────────────
-   splitIntoChars — for character-level animation
-   ───────────────────────────────────────────── */
 function splitIntoChars(element: HTMLElement): HTMLSpanElement[] {
   const text = element.textContent || "";
   element.innerHTML = "";
@@ -36,9 +30,6 @@ function splitIntoChars(element: HTMLElement): HTMLSpanElement[] {
   return spans;
 }
 
-/* ─────────────────────────────────────────────
-   TYPES
-   ───────────────────────────────────────────── */
 interface ContactInfo {
   label: string;
   value: string;
@@ -56,9 +47,6 @@ interface ContactSectionProps {
   className?: string;
 }
 
-/* ─────────────────────────────────────────────
-   MAIN COMPONENT
-   ───────────────────────────────────────────── */
 export default function ContactSection({
   label = texts.contactSection.label,
   title = texts.contactSection.title,
@@ -135,11 +123,7 @@ export default function ContactSection({
 
         gsap.fromTo(
           chars,
-          {
-            opacity: 0,
-            y: 60,
-            rotateX: -90,
-          },
+          { opacity: 0, y: 60, rotateX: -90 },
           {
             opacity: 1,
             y: 0,
@@ -239,31 +223,18 @@ export default function ContactSection({
     <section
       ref={sectionRef}
       className={cn(
-        "relative w-full overflow-hidden",
-        "bg-deep",
-        "py-[clamp(6rem,14vw,10rem)]",
-        "max-md:py-[clamp(4rem,10vw,6rem)]",
+        "relative w-full overflow-hidden bg-deep py-[clamp(6rem,14vw,10rem)] max-md:py-[clamp(4rem,10vw,6rem)]",
         className
       )}
     >
       <div
         ref={marqueeRef}
-        className={cn(
-          "absolute top-1/2 left-0 -translate-y-1/2",
-          "w-screen max-w-full pointer-events-none select-none"
-        )}
+        className="absolute top-1/2 left-0 max-w-full w-screen -translate-y-1/2 pointer-events-none select-none"
         aria-hidden="true"
       >
         <div
           data-marquee-inner
-          className={cn(
-            "overflow-hidden",
-            "whitespace-nowrap",
-            "font-display font-light",
-            "text-[clamp(8rem,20vw,16rem)]",
-            "leading-none tracking-[-0.04em]",
-            "text-accent/[0.03]"
-          )}
+          className="overflow-hidden whitespace-nowrap font-display text-[clamp(8rem,20vw,16rem)] font-light leading-none tracking-[-0.04em] text-accent/[0.03]"
         >
           {marqueeRepeat}
           {marqueeRepeat}
@@ -274,42 +245,21 @@ export default function ContactSection({
         <div className="mb-[clamp(3rem,6vw,5rem)]">
           <span
             ref={labelRef}
-            className={cn(
-              "block",
-              "font-body text-[0.6875rem] font-medium",
-              "tracking-[0.22em] uppercase",
-              "text-accent/50 mb-[18px]",
-              "opacity-0",
-              "motion-reduce:opacity-100!"
-            )}
+            className="mb-[18px] block font-body text-[0.6875rem] font-medium uppercase tracking-[0.22em] text-accent/50 opacity-0 motion-reduce:opacity-100!"
           >
             {label}
           </span>
 
           <h2
             ref={titleRef}
-            className={cn(
-              "font-display",
-              "text-[clamp(3rem,7vw,6rem)]",
-              "font-light leading-[1.05] tracking-[-0.03em]",
-              "text-light",
-              "mb-6",
-              "[perspective:800px]",
-              "motion-reduce:opacity-100!"
-            )}
+            className="mb-6 font-display text-[clamp(3rem,7vw,6rem)] font-light leading-[1.05] tracking-[-0.03em] text-light motion-reduce:opacity-100! [perspective:800px]"
           >
             {titleBase} <em className="italic text-accent">{titleItalic}</em>
           </h2>
 
           <p
             ref={subtitleRef}
-            className={cn(
-              "font-body text-[clamp(0.9375rem,1.1vw,1.0625rem)]",
-              "font-light leading-[1.75]",
-              "text-light/50 max-w-[520px]",
-              "opacity-0",
-              "motion-reduce:opacity-100!"
-            )}
+            className="max-w-[520px] font-body text-[clamp(0.9375rem,1.1vw,1.0625rem)] font-light leading-[1.75] text-light/50 opacity-0 motion-reduce:opacity-100!"
           >
             {subtitle}
           </p>
@@ -317,82 +267,36 @@ export default function ContactSection({
 
         <div
           ref={lineRef}
-          className={cn(
-            "w-full h-px",
-            "bg-accent/10",
-            "origin-left",
-            "mb-[clamp(3rem,6vw,5rem)]",
-            "motion-reduce:scale-x-100!"
-          )}
+          className="mb-[clamp(3rem,6vw,5rem)] h-px w-full origin-left bg-accent/10 motion-reduce:scale-x-100!"
         />
 
-        <div
-          className={cn(
-            "grid",
-            "grid-cols-3 max-md:grid-cols-1",
-            "gap-[clamp(2rem,4vw,4rem)]",
-            "mb-[clamp(4rem,8vw,6rem)]"
-          )}
-        >
+        <div className="mb-[clamp(4rem,8vw,6rem)] grid grid-cols-3 gap-[clamp(2rem,4vw,4rem)] max-md:grid-cols-1">
           {contactItems.map((item, i) => (
             <div
               key={item.label}
               ref={(el) => {
                 contactRefs.current[i] = el;
               }}
-              className={cn(
-                "group",
-                "opacity-0",
-                "motion-reduce:opacity-100!"
-              )}
+              className="group opacity-0 motion-reduce:opacity-100!"
             >
-              <span
-                className={cn(
-                  "block",
-                  "font-body text-[0.6875rem] font-semibold",
-                  "tracking-[0.18em] uppercase",
-                  "text-accent/40",
-                  "mb-3"
-                )}
-              >
+              <span className="mb-3 block font-body text-[0.6875rem] font-semibold uppercase tracking-[0.18em] text-accent/40">
                 {item.label}
               </span>
 
               {item.href ? (
                 <a
                   href={item.href}
-                  className={cn(
-                    "block",
-                    "font-display text-[clamp(1.25rem,2vw,1.75rem)]",
-                    "font-light leading-[1.3] tracking-[-0.01em]",
-                    "text-light/80",
-                    "transition-colors duration-300",
-                    "hover:text-accent"
-                  )}
+                  className="block font-display text-[clamp(1.25rem,2vw,1.75rem)] font-light leading-[1.3] tracking-[-0.01em] text-light/80 transition-colors duration-300 hover:text-accent"
                 >
                   {item.value}
                 </a>
               ) : (
-                <span
-                  className={cn(
-                    "block whitespace-pre-line",
-                    "font-display text-[clamp(1.25rem,2vw,1.75rem)]",
-                    "font-light leading-[1.3] tracking-[-0.01em]",
-                    "text-light/80"
-                  )}
-                >
+                <span className="block whitespace-pre-line font-display text-[clamp(1.25rem,2vw,1.75rem)] font-light leading-[1.3] tracking-[-0.01em] text-light/80">
                   {item.value}
                 </span>
               )}
 
-              <div
-                className={cn(
-                  "mt-4 w-8 h-px",
-                  "bg-accent/15",
-                  "transition-all duration-500 ease-spring",
-                  "group-hover:w-16 group-hover:bg-accent/30"
-                )}
-              />
+              <div className="mt-4 h-px w-8 bg-accent/15 transition-all duration-500 ease-spring group-hover:w-16 group-hover:bg-accent/30" />
             </div>
           ))}
         </div>
@@ -400,22 +304,13 @@ export default function ContactSection({
         <div className="flex justify-center max-md:justify-start">
           <div
             ref={ctaWrapperRef}
-            className={cn(
-              "opacity-0",
-              "motion-reduce:opacity-100!"
-            )}
+            className="opacity-0 motion-reduce:opacity-100!"
           >
             <a
               href={whatsappHref}
               target="_blank"
               rel="noopener noreferrer"
-              className={cn(
-                "inline-block",
-                "px-12 py-5 rounded-xs max-md:px-10 max-md:py-4",
-                "bg-accent text-neutral/80",
-                "font-body text-[0.75rem]",
-                "font-medium tracking-[0.18em] uppercase"
-              )}
+              className="inline-block rounded-xs bg-accent px-12 py-5 font-body text-[0.75rem] font-medium uppercase tracking-[0.18em] text-on-accent-soft max-md:px-10 max-md:py-4"
             >
               {whatsappLabel}
             </a>

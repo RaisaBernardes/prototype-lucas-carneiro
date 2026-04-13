@@ -5,16 +5,10 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import texts from "../app/texts/texts.json";
 
-/* ─────────────────────────────────────────────
-   cn() — lightweight class merger
-   ───────────────────────────────────────────── */
 function cn(...classes: (string | false | null | undefined)[]) {
   return classes.filter(Boolean).join(" ");
 }
 
-/* ─────────────────────────────────────────────
-   SplitText replacement (free)
-   ───────────────────────────────────────────── */
 function splitIntoWords(element: HTMLElement): HTMLSpanElement[] {
   const text = element.textContent || "";
   const words = text.split(/\s+/).filter(Boolean);
@@ -33,9 +27,6 @@ function splitIntoWords(element: HTMLElement): HTMLSpanElement[] {
   return spans;
 }
 
-/* ─────────────────────────────────────────────
-   TYPES
-   ───────────────────────────────────────────── */
 interface StoryCard {
   index: string;
   title: string;
@@ -53,9 +44,6 @@ interface StorySectionProps {
   className?: string;
 }
 
-/* ─────────────────────────────────────────────
-   BULLET ITEM (with hover image + underline)
-   ───────────────────────────────────────────── */
 function BulletItem({
   text,
   imageLabel,
@@ -147,9 +135,9 @@ function BulletItem({
       <span
         className={cn(
           "absolute bottom-[-1px] left-0",
-          "w-full h-px",
+          "h-px w-full",
           "bg-accent",
-          "scale-x-0 origin-left",
+          "origin-left scale-x-0",
           "transition-transform duration-500 ease-spring",
           "group-hover/bullet:scale-x-100",
           "motion-reduce:transition-none!"
@@ -161,14 +149,13 @@ function BulletItem({
         ref={imgRef}
         className={cn(
           "absolute top-0 left-0",
-          "w-[140px] h-[140px]",
-          "max-lg:w-[120px] max-lg:h-[120px]",
+          "h-[140px] w-[140px]",
+          "max-lg:h-[120px] max-lg:w-[120px]",
           "max-md:hidden",
           "bg-card-alt border border-accent/0 shadow-sm",
-          "flex items-center justify-center",
-          "pointer-events-none z-20",
-          "opacity-0 will-change-[transform,opacity]",
-          "overflow-hidden"
+          "z-20 flex items-center justify-center",
+          "pointer-events-none overflow-hidden",
+          "opacity-0 will-change-[transform,opacity]"
         )}
         aria-hidden="true"
       >
@@ -176,15 +163,14 @@ function BulletItem({
           <img
             src={imageSrc}
             alt={imageLabel}
-            className="w-full h-full object-cover block pointer-events-none select-none"
+            className="block h-full w-full object-cover pointer-events-none select-none"
             draggable={false}
           />
         ) : (
           <span
             className={cn(
-              "font-body text-[0.5625rem] font-semibold",
-              "tracking-[0.18em] uppercase",
-              "text-accent/50 text-center p-2"
+              "p-2 text-center font-body text-[0.5625rem] font-semibold uppercase tracking-[0.18em]",
+              "text-accent/50"
             )}
           >
             {imageLabel}
@@ -195,9 +181,6 @@ function BulletItem({
   );
 }
 
-/* ─────────────────────────────────────────────
-   MAIN COMPONENT
-   ───────────────────────────────────────────── */
 export default function StorySection({
   label = texts.storySection.label,
   title = texts.storySection.title,
@@ -462,14 +445,11 @@ export default function StorySection({
           "max-md:pt-[clamp(3rem,8vw,5rem)] max-md:pb-[clamp(2rem,4vw,3rem)]"
         )}
       >
-        <div className="mx-auto md:max-w-[1320px] px-10  max-md:px-5 ">
+        <div className="mx-auto px-10 max-md:px-5 md:max-w-[1320px]">
           <span
             ref={labelRef}
             className={cn(
-              "block",
-              "font-body text-[0.6875rem] font-medium",
-              "tracking-[0.22em] uppercase",
-              "text-accent/50 mb-[18px]",
+              "mb-[18px] block font-body text-[0.6875rem] font-medium uppercase tracking-[0.22em] text-accent/50",
               mounted && "opacity-0",
               "motion-reduce:opacity-100!"
             )}
@@ -480,9 +460,7 @@ export default function StorySection({
           <h2
             ref={titleRef}
             className={cn(
-              "font-display text-[clamp(2.4rem,5vw,4.5rem)] ",
-              "font-light leading-[1.05] tracking-[-0.025em]",
-              "text-light/78 mb-6",
+              "mb-6 font-display text-[clamp(2.4rem,5vw,4.5rem)] font-light leading-[1.05] tracking-[-0.025em] text-light/78",
               mounted && "opacity-0",
               "motion-reduce:opacity-100!"
             )}
@@ -494,9 +472,7 @@ export default function StorySection({
             <p
               ref={subtitleRef}
               className={cn(
-                "font-body text-[clamp(0.9375rem,1.1vw,1.0625rem)]",
-                "font-light leading-[1.75]",
-                "text-accent/50 max-w-[500px]",
+                "max-w-[500px] font-body text-[clamp(0.9375rem,1.1vw,1.0625rem)] font-light leading-[1.75] text-accent/50",
                 mounted && "opacity-0",
                 "motion-reduce:opacity-100!"
               )}
@@ -509,9 +485,7 @@ export default function StorySection({
 
       <div className="relative w-full">
         {cards.map((card, i) => {
-          const desktopBullets = (card.body || "")
-            .split("\n\n")
-            .filter(Boolean);
+          const desktopBullets = (card.body || "").split("\n\n").filter(Boolean);
           const mobileBullets = (card.bodyMobile || card.body || "")
             .split("\n\n")
             .filter(Boolean);
@@ -521,23 +495,18 @@ export default function StorySection({
               key={card.index}
               data-sticky-card
               className={cn(
-                "sticky top-0 w-full",
-                "min-h-screen min-h-[100svh]",
-                "max-md:relative! max-md:top-auto!",
-                "max-md:min-h-0! max-md:z-auto!"
+                "sticky top-0 w-full min-h-screen min-h-[100svh]",
+                "max-md:relative! max-md:top-auto! max-md:min-h-0! max-md:z-auto!"
               )}
               style={{ zIndex: i + 1 }}
             >
               <div
                 data-card-inner
                 className={cn(
-                  "relative w-full",
-                  "min-h-screen min-h-[100svh]",
-                  "flex items-start",
+                  "relative flex min-h-screen min-h-[100svh] w-full items-start",
                   "py-[120px] max-lg:py-20 max-md:py-[60px]",
                   i % 2 === 1 ? "bg-card-alt" : "bg-card",
-                  "will-change-transform origin-top",
-                  "border-t border-accent/10",
+                  "origin-top border-t border-accent/10 will-change-transform",
                   "max-md:min-h-0! max-md:h-auto! max-md:overflow-visible!",
                   "motion-reduce:transform-none!"
                 )}
@@ -545,29 +514,24 @@ export default function StorySection({
                 <div
                   data-dim-overlay
                   className={cn(
-                    "absolute inset-0",
-                    "bg-black opacity-0",
-                    "pointer-events-none z-10",
+                    "absolute inset-0 z-10 bg-black opacity-0 pointer-events-none",
                     "max-md:hidden",
                     "motion-reduce:hidden!"
                   )}
+                  style={{ backgroundColor: "var(--color-story-overlay)" }}
                 />
 
                 <div
                   data-card-container
                   className={cn(
-                    "relative z-[1]",
-                    "w-full max-w-[1320px] mx-auto",
-                    "px-10 max-lg:px-[30px] max-md:px-5",
-                    "will-change-transform",
-                    "max-md:transform-none!",
-                    "motion-reduce:transform-none!"
+                    "relative z-[1] mx-auto w-full max-w-[1320px] px-10 will-change-transform",
+                    "max-lg:px-[30px] max-md:px-5",
+                    "max-md:transform-none! motion-reduce:transform-none!"
                   )}
                 >
                   <div
                     className={cn(
-                      "grid",
-                      "grid-cols-[minmax(60px,1fr)_5fr]",
+                      "grid grid-cols-[minmax(60px,1fr)_5fr]",
                       "md:gap-100 max-lg:gap-6",
                       "max-md:grid-cols-1 max-md:gap-4"
                     )}
@@ -575,11 +539,8 @@ export default function StorySection({
                     <div
                       data-animate="index-fade"
                       className={cn(
-                        "font-display italic font-normal",
-                        "text-[clamp(4rem,12vw,7rem)]",
+                        "font-display text-[clamp(4rem,12vw,7rem)] font-normal italic leading-[0.9] tracking-[-0.04em] text-accent/12",
                         "md:text-[clamp(2.5rem,14vw,12.5rem)]",
-                        "leading-[0.9] tracking-[-0.04em]",
-                        "text-accent/12",
                         mounted && "opacity-0",
                         "motion-reduce:opacity-100!"
                       )}
@@ -588,14 +549,7 @@ export default function StorySection({
                     </div>
 
                     <div className="flex flex-col">
-                      <h3
-                        className={cn(
-                          "font-display",
-                          "text-[clamp(1.75rem,2vw,2.5rem)]",
-                          "font-light leading-[1.15] tracking-[-0.01em]",
-                          "text-light/78 m-0"
-                        )}
-                      >
+                      <h3 className="m-0 font-display text-[clamp(1.75rem,2vw,2.5rem)] font-light leading-[1.15] tracking-[-0.01em] text-light/78">
                         {card.title}
                       </h3>
 
@@ -603,18 +557,13 @@ export default function StorySection({
 
                       <ul
                         data-bullet-list
-                        className={cn(
-                          "hidden md:block",
-                          "max-w-[560px] list-none m-0 p-0 uppercase"
-                        )}
+                        className="m-0 hidden max-w-[560px] list-none p-0 uppercase md:block"
                       >
                         {desktopBullets.map((text, bi) => (
                           <BulletItem
                             key={bi}
                             text={text}
-                            imageLabel={
-                              card.bulletImages?.[bi]?.alt || card.title
-                            }
+                            imageLabel={card.bulletImages?.[bi]?.alt || card.title}
                             imageSrc={card.bulletImages?.[bi]?.src}
                             index={bi}
                           />
@@ -623,18 +572,13 @@ export default function StorySection({
 
                       <ul
                         data-bullet-list
-                        className={cn(
-                          "block md:hidden",
-                          "max-w-[560px] list-none m-0 p-0"
-                        )}
+                        className="m-0 block max-w-[560px] list-none p-0 md:hidden"
                       >
                         {mobileBullets.map((text, bi) => (
                           <BulletItem
                             key={bi}
                             text={text}
-                            imageLabel={
-                              card.bulletImages?.[bi]?.alt || card.title
-                            }
+                            imageLabel={card.bulletImages?.[bi]?.alt || card.title}
                             index={bi}
                           />
                         ))}
