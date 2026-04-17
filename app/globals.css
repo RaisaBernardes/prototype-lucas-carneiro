@@ -37,6 +37,18 @@
 
   --color-story-overlay: rgba(0, 0, 0, 1);
 
+  /* ── Mobile Hero: editorial surface tokens ── */
+  --color-hero-surface: #F7F6F2;
+  --color-hero-surface-warm: #F3F1EC;
+  --color-hero-photo-overlay: rgba(13, 25, 33, 0.12);
+  --color-hero-photo-vignette: rgba(13, 25, 33, 0.45);
+  --color-hero-name: #0D1921;
+  --color-hero-credential-rule: rgba(168, 199, 190, 0.40);
+  --color-hero-credential-text: #6B6B64;
+  --color-hero-cta-bg: #1E2E32;
+  --color-hero-cta-text: #F0EFEB;
+  --color-hero-cta-border: rgba(168, 199, 190, 0.25);
+
   --shadow-testimonial-hover: 0 4px 32px rgba(25, 25, 23, 0.04);
 
   --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
@@ -70,4 +82,231 @@ body {
   background-color: var(--color-bg);
   color: var(--color-ink);
   overflow-x: hidden;
+}
+
+/* ═══════════════════════════════════════════════════════
+   MOBILE HERO — Cinematic Editorial Redesign
+   Only active ≤ 767 px. Desktop is completely untouched.
+   ═══════════════════════════════════════════════════════ */
+
+@media (max-width: 767px) {
+
+  /* ── Surface / atmosphere ── */
+  .hero-mobile-surface {
+    background-color: var(--color-hero-surface);
+    /* subtle mineral grain — felt, not seen */
+    background-image:
+      url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.018'/%3E%3C/svg%3E");
+  }
+
+  /* ── Photo block ── */
+  .hero-mobile-photo-wrap {
+    position: relative;
+    width: 100%;
+    /* tall cinematic crop — portrait dominates */
+    height: 72svh;
+    min-height: 420px;
+    max-height: 580px;
+    overflow: hidden;
+  }
+
+  .hero-mobile-photo-wrap::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      transparent 40%,
+      var(--color-hero-surface) 100%
+    );
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  /* Subtle vignette for depth */
+  .hero-mobile-photo-wrap::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      ellipse 80% 70% at 55% 35%,
+      transparent 0%,
+      var(--color-hero-photo-overlay) 100%
+    );
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* ── Name — the "signature move" ──
+     Name anchored at the transition zone between
+     photo darkness and surface, partially overlapping. */
+  .hero-mobile-name-anchor {
+    position: relative;
+    z-index: 5;
+    margin-top: -64px;          /* pulls name UP into the photo fade */
+    padding: 0 24px;
+  }
+
+  .hero-mobile-name {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: clamp(38px, 11vw, 52px);
+    line-height: 1.02;
+    letter-spacing: -0.035em;
+    color: var(--color-hero-name);
+  }
+
+  /* Sculptural line-break: first name full width, last name indented */
+  .hero-mobile-name-first {
+    display: block;
+  }
+
+  .hero-mobile-name-last {
+    display: block;
+    padding-left: 0.15em;    /* subtle asymmetric offset */
+  }
+
+  /* ── Eyebrow ── */
+  .hero-mobile-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 28px;
+    padding: 0 24px;
+  }
+
+  .hero-mobile-eyebrow-rule {
+    display: block;
+    width: 22px;
+    height: 1px;
+    background-color: var(--color-accent);
+    flex-shrink: 0;
+  }
+
+  .hero-mobile-eyebrow-text {
+    font-family: var(--font-body);
+    font-size: 10px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--color-accent-dark);
+  }
+
+  /* ── Body copy ── */
+  .hero-mobile-body {
+    padding: 0 24px;
+    margin-top: 20px;
+    max-width: 300px;
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--color-ink-mid);
+  }
+
+  /* ── CTA — object-de-marque ── */
+  .hero-mobile-cta {
+    display: inline-block;
+    margin: 32px 0 0 24px;
+    padding: 15px 36px;
+    background-color: var(--color-hero-cta-bg);
+    color: var(--color-hero-cta-text);
+    border: 1px solid var(--color-hero-cta-border);
+    font-family: var(--font-body);
+    font-size: 10.5px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    text-decoration: none;
+    transition: background-color 0.4s ease, border-color 0.4s ease;
+  }
+
+  .hero-mobile-cta:active {
+    background-color: var(--color-deep);
+  }
+
+  /* ── Credentials — institutional seal ── */
+  .hero-mobile-credentials {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px;
+    padding: 40px 24px 48px;
+    margin-top: 0;
+  }
+
+  .hero-mobile-credential-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .hero-mobile-credential-label {
+    font-family: var(--font-body);
+    font-size: 8.5px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--color-accent-dark);
+  }
+
+  .hero-mobile-credential-value {
+    font-family: var(--font-body);
+    font-size: 11.5px;
+    font-weight: 300;
+    color: var(--color-hero-credential-text);
+  }
+
+  .hero-mobile-credential-divider {
+    width: 1px;
+    height: 28px;
+    background-color: var(--color-hero-credential-rule);
+    flex-shrink: 0;
+  }
+
+  /* ── Reveal animations ── */
+  .hero-m-reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    animation: heroMobileReveal 0.9s var(--ease-spring) forwards;
+  }
+
+  .hero-m-reveal-photo {
+    opacity: 0;
+    animation: heroMobileRevealPhoto 1.1s ease-out forwards;
+  }
+
+  .hero-m-delay-1 { animation-delay: 0.08s; }
+  .hero-m-delay-2 { animation-delay: 0.22s; }
+  .hero-m-delay-3 { animation-delay: 0.36s; }
+  .hero-m-delay-4 { animation-delay: 0.48s; }
+  .hero-m-delay-5 { animation-delay: 0.60s; }
+  .hero-m-delay-6 { animation-delay: 0.72s; }
+
+  @keyframes heroMobileReveal {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes heroMobileRevealPhoto {
+    0% {
+      opacity: 0;
+      transform: scale(1.04);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  /* ── Hide elements not needed in mobile hero ── */
+  .hero-mobile-quote-hide {
+    display: none !important;
+  }
+
+  .hero-mobile-index-hide {
+    display: none !important;
+  }
 }

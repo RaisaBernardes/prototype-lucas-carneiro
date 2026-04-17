@@ -65,6 +65,7 @@ export default function Navbar({
           --nav-height: 64px;
         }
 
+        /* ── Desktop nav links ── */
         .nav-link-item {
           position: relative;
           padding-bottom: 2px;
@@ -87,27 +88,79 @@ export default function Navbar({
         }
         .nav-cta-link:hover { opacity: 0.7; }
 
-        .burger-line {
-          display: block;
-          width: 20px;
-          height: 1.4px;
-          background: currentColor;
-          border-radius: 1px;
-          transition: transform 0.35s cubic-bezier(0.76, 0, 0.18, 1),
-                      opacity  0.25s ease;
-          transform-origin: center;
-        }
-        .burger-open .burger-top {
-          transform: translateY(6.3px) rotate(45deg);
-        }
-        .burger-open .burger-mid {
-          opacity: 0;
-          transform: scaleX(0);
-        }
-        .burger-open .burger-bot {
-          transform: translateY(-6.3px) rotate(-45deg);
+        /* ═══════════════════════════════════════════════
+           MOBILE HAMBURGER — Custom 2-line editorial
+           Hidden on desktop (≥ 768px), visible only on mobile.
+           ═══════════════════════════════════════════════ */
+        .burger-editorial {
+          display: none;
         }
 
+        @media (max-width: 767px) {
+          .burger-editorial {
+            position: relative;
+            z-index: 50;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            justify-content: center;
+            gap: 7px;
+            width: 44px;
+            height: 44px;
+            padding: 0;
+            background: none;
+            border: none;
+            cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
+          }
+
+          .burger-editorial-line {
+            display: block;
+            height: 1px;
+            background: currentColor;
+            transition:
+              width     0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity   0.3s ease;
+            transform-origin: center;
+          }
+
+          /* Top line — longer */
+          .burger-editorial-line-top {
+            width: 28px;
+          }
+
+          /* Bottom line — shorter, asymmetric */
+          .burger-editorial-line-bot {
+            width: 19px;
+          }
+
+          /* ── Open state: lines cross into an X ── */
+          .burger-editorial.is-open .burger-editorial-line-top {
+            width: 24px;
+            transform: translateY(4px) rotate(45deg);
+          }
+
+          .burger-editorial.is-open .burger-editorial-line-bot {
+            width: 24px;
+            transform: translateY(-4px) rotate(-45deg);
+          }
+
+          /* ── Hover/active: equalize widths ── */
+          .burger-editorial:active .burger-editorial-line-bot {
+            width: 28px;
+          }
+        }
+
+        @media (hover: hover) and (max-width: 767px) {
+          .burger-editorial:hover .burger-editorial-line-bot {
+            width: 28px;
+          }
+        }
+
+        /* ═══════════════════════════════════════════════
+           MOBILE OVERLAY — unchanged logic
+           ═══════════════════════════════════════════════ */
         .mobile-overlay {
           position: fixed;
           inset: 0;
@@ -195,6 +248,7 @@ export default function Navbar({
         }}
       >
         <div className="mx-auto flex h-full max-w-[1320px] items-center justify-between px-6 md:px-10 lg:px-14">
+          {/* ── Logo ── */}
           <Link
             href="/"
             aria-label="Ir para o início"
@@ -218,6 +272,7 @@ export default function Navbar({
             />
           </Link>
 
+          {/* ── Desktop nav (unchanged) ── */}
           <nav
             aria-label="Navegação principal"
             className="hidden items-center gap-8 md:flex"
@@ -266,14 +321,15 @@ export default function Navbar({
             </Link>
           </nav>
 
+          {/* ── Mobile hamburger: custom 2-line editorial ── */}
           <button
             aria-label={mobileOpen ? "Fechar menu" : "Abrir menu"}
             aria-expanded={mobileOpen}
             aria-controls="mobile-menu"
             onClick={() => setMobileOpen((v) => !v)}
             className={[
-              "relative z-50 flex h-11 w-11 flex-col items-center justify-center gap-[5px] md:hidden",
-              mobileOpen ? "burger-open" : "",
+              "burger-editorial md:hidden",
+              mobileOpen ? "is-open" : "",
             ].join(" ")}
             style={{
               color: mobileOpen
@@ -281,19 +337,16 @@ export default function Navbar({
                 : opaque
                   ? "var(--color-ink)"
                   : "var(--color-white)",
-              background: "none",
-              border: "none",
-              cursor: "pointer",
               transition: "color 0.3s",
             }}
           >
-            <span className="burger-line burger-top" />
-            <span className="burger-line burger-mid" />
-            <span className="burger-line burger-bot" />
+            <span className="burger-editorial-line burger-editorial-line-top" />
+            <span className="burger-editorial-line burger-editorial-line-bot" />
           </button>
         </div>
       </header>
 
+      {/* ── Mobile overlay menu ── */}
       <div
         id="mobile-menu"
         role="dialog"
