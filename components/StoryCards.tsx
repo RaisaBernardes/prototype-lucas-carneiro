@@ -122,7 +122,7 @@ function BulletItem({
       <span
         className={cn(
           "block",
-          "font-body text-[clamp(0.4375rem,1.1vw,1.0625rem)]",
+          "font-body text-[clamp(0.875rem,1.1vw,1.0625rem)]",
           "font-light leading-[1.7]",
           "text-light/70",
           "transition-colors duration-300",
@@ -313,21 +313,31 @@ export default function StorySection({
           });
         }
 
-        if (!isMobile) {
-          stickyCards.forEach((card, i) => {
-            if (i >= stickyCards.length - 1) return;
-            const overlay = card.querySelector(
-              "[data-dim-overlay]"
-            ) as HTMLElement | null;
-            const inner = card.querySelector(
-              "[data-card-inner]"
-            ) as HTMLElement | null;
-            const nextCard = stickyCards[i + 1];
+        stickyCards.forEach((card, i) => {
+          if (i >= stickyCards.length - 1) return;
+          const overlay = card.querySelector(
+            "[data-dim-overlay]"
+          ) as HTMLElement | null;
+          const inner = card.querySelector(
+            "[data-card-inner]"
+          ) as HTMLElement | null;
+          const nextCard = stickyCards[i + 1];
 
-            if (!inner || !nextCard) return;
+          if (!inner || !nextCard) return;
 
-            gsap.to(inner, {
-              scale: 0.97,
+          gsap.to(inner, {
+            scale: 0.97,
+            ease: "none",
+            scrollTrigger: {
+              trigger: nextCard,
+              start: "top bottom",
+              end: "top 10%",
+              scrub: true,
+            },
+          });
+          if (overlay) {
+            gsap.to(overlay, {
+              opacity: 0.15,
               ease: "none",
               scrollTrigger: {
                 trigger: nextCard,
@@ -336,20 +346,8 @@ export default function StorySection({
                 scrub: true,
               },
             });
-            if (overlay) {
-              gsap.to(overlay, {
-                opacity: 0.15,
-                ease: "none",
-                scrollTrigger: {
-                  trigger: nextCard,
-                  start: "top bottom",
-                  end: "top 10%",
-                  scrub: true,
-                },
-              });
-            }
-          });
-        }
+          }
+        });
 
         gsap.utils
           .toArray<HTMLElement>("[data-animate='index-fade']")
@@ -496,7 +494,7 @@ export default function StorySection({
               data-sticky-card
               className={cn(
                 "sticky top-0 w-full min-h-screen min-h-[100svh]",
-                "max-md:relative! max-md:top-auto! max-md:min-h-0! max-md:z-auto!"
+                "max-md:min-h-0!"
               )}
               style={{ zIndex: i + 1 }}
             >
@@ -515,7 +513,6 @@ export default function StorySection({
                   data-dim-overlay
                   className={cn(
                     "absolute inset-0 z-10 bg-black opacity-0 pointer-events-none",
-                    "max-md:hidden",
                     "motion-reduce:hidden!"
                   )}
                   style={{ backgroundColor: "var(--color-story-overlay)" }}
