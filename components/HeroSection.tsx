@@ -209,7 +209,7 @@ export default function HeroSection({
             "md:px-10 md:pb-14 md:pt-[72px] lg:px-14",
           ].join(" ")}
         >
-          <div className="mb-10 flex items-center gap-2.5">
+          <div className="mb-6 flex items-center gap-2.5">
             <span className="block h-px w-[22px] shrink-0 bg-accent" aria-hidden />
             <span className="font-body text-[10px] font-medium uppercase tracking-[0.2em] text-accent">
               {eyebrow}
@@ -233,7 +233,7 @@ export default function HeroSection({
 
           {credentials.length > 0 && (
             <div
-              className="mt-auto flex flex-wrap items-center gap-4 pt-12"
+              className="mt-10 flex flex-wrap items-center gap-4"
               aria-label="Credenciais"
             >
               {credentials.map((cred, i) => (

@@ -310,7 +310,7 @@ export default function Navbar({
               className="nav-cta-link font-body text-[11px] font-medium uppercase tracking-[0.12em] no-underline"
               style={{
                 color: opaque
-                  ? "var(--color-accent)"
+                  ? "var(--color-accent-dark)"
                   : "var(--color-nav-cta-on-image)",
                 transition: "color 0.3s, border-color 0.3s",
                 borderBottomColor: opaque
