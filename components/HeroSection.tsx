@@ -19,6 +19,7 @@ interface HeroSectionProps {
   eyebrow?: string;
 }
 
+/* ── Desktop credential sub-components (unchanged) ── */
 function CredentialDivider() {
   return <div className="h-6 w-px shrink-0 bg-border" aria-hidden />;
 }
@@ -36,7 +37,7 @@ function CredentialPair({ label, value }: CredentialItem) {
   );
 }
 
-/* ── Mobile-only credential sub-components ── */
+/* ── Mobile-only credential sub-components (v2) ── */
 function MobileCredentialDivider() {
   return <div className="hero-mobile-credential-divider" aria-hidden />;
 }
@@ -73,7 +74,7 @@ export default function HeroSection({
   return (
     <>
       {/* ═══════════════════════════════════════════════════════════
-          MOBILE HERO — Cinematic Editorial (≤ 767px)
+          MOBILE HERO — Cinematic Editorial v2 (≤ 767px)
           Completely separate markup for mobile-native art direction.
           Hidden on md+ via Tailwind.
          ═══════════════════════════════════════════════════════════ */}
@@ -90,7 +91,7 @@ export default function HeroSection({
             priority
             sizes="100vw"
             className="object-cover"
-            style={{ objectPosition: "55% 18%" }}
+            style={{ objectPosition: "52% 15%" }}
           />
 
           {/* Quote — hidden on mobile per brief */}
@@ -113,7 +114,7 @@ export default function HeroSection({
           </span>
         </div>
 
-        {/* Name — the signature move: anchored in the photo/surface transition */}
+        {/* Name — the signature move: anchored deeper into the photo/surface transition */}
         <div className="hero-mobile-name-anchor hero-m-reveal hero-m-delay-2">
           <h1 className="hero-mobile-name">
             <span className="hero-mobile-name-first">{firstName}</span>
@@ -121,7 +122,7 @@ export default function HeroSection({
           </h1>
         </div>
 
-        {/* Eyebrow */}
+        {/* Eyebrow — structural label */}
         <div className="hero-mobile-eyebrow hero-m-reveal hero-m-delay-3">
           <span className="hero-mobile-eyebrow-rule" aria-hidden />
           <span className="hero-mobile-eyebrow-text">{eyebrow}</span>
@@ -132,7 +133,7 @@ export default function HeroSection({
           {body}
         </p>
 
-        {/* CTA */}
+        {/* CTA — institutional object */}
         <a
           href={ctaHref}
           className="hero-mobile-cta hero-m-reveal hero-m-delay-5"
@@ -140,18 +141,17 @@ export default function HeroSection({
           {ctaLabel}
         </a>
 
-        {/* Credentials — institutional seal */}
+        {/* Credentials — architectural grid seal */}
         {credentials.length > 0 && (
           <div
-            className="hero-mobile-credentials hero-m-reveal hero-m-delay-6"
+            className="hero-mobile-credentials-wrap hero-m-reveal hero-m-delay-6"
             aria-label="Credenciais"
           >
-            {credentials.map((cred, i) => (
-              <div key={cred.label} className="flex items-center gap-4">
-                {i > 0 && <MobileCredentialDivider />}
-                <MobileCredentialPair {...cred} />
-              </div>
-            ))}
+            <div className="hero-mobile-credentials-inner">
+              {credentials.map((cred) => (
+                <MobileCredentialPair key={cred.label} {...cred} />
+              ))}
+            </div>
           </div>
         )}
       </section>

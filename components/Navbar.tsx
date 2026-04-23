@@ -65,7 +65,7 @@ export default function Navbar({
           --nav-height: 64px;
         }
 
-        /* ── Desktop nav links ── */
+        /* ── Desktop nav links (unchanged) ── */
         .nav-link-item {
           position: relative;
           padding-bottom: 2px;
@@ -89,8 +89,8 @@ export default function Navbar({
         .nav-cta-link:hover { opacity: 0.7; }
 
         /* ═══════════════════════════════════════════════
-           MOBILE HAMBURGER — Custom 2-line editorial
-           Hidden on desktop (≥ 768px), visible only on mobile.
+           MOBILE HAMBURGER — Custom 2-line editorial v2
+           Hidden on desktop (≥ 768px).
            ═══════════════════════════════════════════════ */
         .burger-editorial {
           display: none;
@@ -104,7 +104,7 @@ export default function Navbar({
             flex-direction: column;
             align-items: flex-end;
             justify-content: center;
-            gap: 7px;
+            gap: 6px;
             width: 44px;
             height: 44px;
             padding: 0;
@@ -116,45 +116,46 @@ export default function Navbar({
 
           .burger-editorial-line {
             display: block;
-            height: 1px;
+            height: 1.5px;
             background: currentColor;
+            border-radius: 0;
             transition:
-              width     0.4s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              width     0.45s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
               opacity   0.3s ease;
             transform-origin: center;
           }
 
-          /* Top line — longer */
+          /* Top line */
           .burger-editorial-line-top {
-            width: 28px;
+            width: 26px;
           }
 
-          /* Bottom line — shorter, asymmetric */
+          /* Bottom line — deliberate asymmetry */
           .burger-editorial-line-bot {
-            width: 19px;
+            width: 18px;
           }
 
-          /* ── Open state: lines cross into an X ── */
+          /* ── Open state: X ── */
           .burger-editorial.is-open .burger-editorial-line-top {
-            width: 24px;
-            transform: translateY(4px) rotate(45deg);
+            width: 22px;
+            transform: translateY(3.75px) rotate(45deg);
           }
 
           .burger-editorial.is-open .burger-editorial-line-bot {
-            width: 24px;
-            transform: translateY(-4px) rotate(-45deg);
+            width: 22px;
+            transform: translateY(-3.75px) rotate(-45deg);
           }
 
-          /* ── Hover/active: equalize widths ── */
+          /* ── Active: equalize ── */
           .burger-editorial:active .burger-editorial-line-bot {
-            width: 28px;
+            width: 26px;
           }
         }
 
         @media (hover: hover) and (max-width: 767px) {
           .burger-editorial:hover .burger-editorial-line-bot {
-            width: 28px;
+            width: 26px;
           }
         }
 
@@ -321,7 +322,7 @@ export default function Navbar({
             </Link>
           </nav>
 
-          {/* ── Mobile hamburger: custom 2-line editorial ── */}
+          {/* ── Mobile hamburger: custom 2-line editorial v2 ── */}
           <button
             aria-label={mobileOpen ? "Fechar menu" : "Abrir menu"}
             aria-expanded={mobileOpen}
