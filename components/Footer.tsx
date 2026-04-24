@@ -63,7 +63,7 @@ function SocialIcon({ platform }: { platform: string }) {
 function LogoIcon() {
   return (
     <Image
-      src="/images/leandro-gregorio/logo-leandro.webp"
+      src="/images/personal/logo-lucas.png"
       alt={texts.footerSection.logoAlt}
       width={12}
       height={24}

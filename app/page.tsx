@@ -47,12 +47,11 @@ export default function Home() {
         }}
       >
         <Navbar
-          logoSrc="/images/leandro-gregorio/logo-leandro.webp"
-          logoAlt="Dr. Leandro Gregório"
+          logoAlt="Dr. Lucas Carneiro"
           logoWidth={148}
-          logoHeight={36}
+          logoHeight={360}
         />
-        <HeroSection imageSrc="/images/leandro-gregorio/hero1.png" />
+        <HeroSection imageSrc="/images/personal/hero-lucas.jpeg" />
         <AboutSection />
         <ScrollTextReveal
           bgColor="#FAFAF8"

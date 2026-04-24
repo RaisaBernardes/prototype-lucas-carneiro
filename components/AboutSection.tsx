@@ -122,7 +122,7 @@ export default function AboutSection() {
         {/* ── CTA Button ── */}
         <div
           ref={ctaRef}
-          className="mt-6 pb-20 md:-mt-14 md:pb-28 max-w-[520px]"
+          className="mt-6 pb-20 md:-mt-5 md:pb-28 max-w-[520px]"
         >
           <a
             href={about.ctaButtonHref}

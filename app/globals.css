@@ -5,56 +5,58 @@
   --font-serif: var(--font-cormorant, "Cormorant Garamond"), Georgia, serif;
   --font-body: var(--font-work-sans), system-ui, sans-serif;
 
-  --color-bg: #FAFAF8;
-  --color-ink: #0D1921;
-  --color-ink-mid: #555550;
-  --color-ink-light: #9E9A96;
-  --color-border: #E8E4DE;
-  --color-accent: #a8c7be;
-  --color-accent-dark: #4A6B72;
-  --color-green: #3d5a45;
+  --color-bg: #F3F3F4;
+  --color-ink: #0D0E13;
+  --color-ink-mid: #343C47;
+  --color-ink-light: #6F7F96;
+  --color-border: #D0D1D4;
+  --color-accent: #F3F3F4;
+  --color-accent-dark: #5A7190;
+  --color-green: #12161F;
   --color-white: #FFFFFF;
 
-  --color-deep: #0d1921;
-  --color-card: #132529;
-  --color-card-alt: #132529;
-  --color-light: #e8ede9;
-  --color-button: #2B3B3F;
+  --color-deep: #0D0E13;
+  --color-card: #11141B;
+  --color-card-alt: #11141B;
+  --color-light: #F1F2F3;
+  --color-button: #283548;
+  --color-hero-bg: #0A141B;
 
-  --color-overlay-strong: rgba(255, 255, 255, 0.82);
-  --color-overlay-medium: rgba(255, 255, 255, 0.62);
-  --color-overlay-subtle: rgba(255, 255, 255, 0.18);
-  --color-on-accent-soft: rgba(38, 38, 38, 0.8);
+  --color-overlay-strong: rgba(243, 243, 244, 0.82);
+  --color-overlay-medium: rgba(243, 243, 244, 0.62);
+  --color-overlay-subtle: rgba(243, 243, 244, 0.18);
+  --color-on-accent-soft: rgba(13, 14, 19, 0.8);
 
-  --color-nav-bg-opaque: rgba(250, 250, 248, 0.97);
+  --color-nav-bg-opaque: rgba(243, 243, 244, 0.97);
   --color-nav-link-on-image: rgba(255, 255, 255, 0.78);
   --color-nav-cta-on-image: rgba(255, 255, 255, 0.9);
   --color-nav-divider-on-image: rgba(255, 255, 255, 0.2);
   --color-nav-cta-border-on-image: rgba(255, 255, 255, 0.5);
 
-  --color-text-reveal-from: rgba(13, 25, 33, 0.18);
-  --color-text-reveal-to: rgba(13, 25, 33, 0.45);
+  --color-text-reveal-from: rgba(13, 14, 19, 0.18);
+  --color-text-reveal-to: rgba(13, 14, 19, 0.45);
 
   --color-story-overlay: rgba(0, 0, 0, 1);
 
   /* ── Mobile Hero: editorial surface tokens (v2 — refined) ── */
-  --color-hero-surface: #F5F4F0;
-  --color-hero-surface-warm: #F3F1EC;
-  --color-hero-photo-overlay: rgba(13, 25, 33, 0.08);
-  --color-hero-fade-mid: rgba(245, 244, 240, 0.55);
-  --color-hero-name: #0B1720;
-  --color-hero-eyebrow-rule: #8FADA3;
-  --color-hero-eyebrow-text: #3D5E65;
-  --color-hero-credential-rule: rgba(143, 173, 163, 0.35);
-  --color-hero-credential-label: #506B6F;
-  --color-hero-credential-value: #3A3A36;
-  --color-hero-cta-bg: #1A2C30;
-  --color-hero-cta-text: #EEEDEA;
-  --color-hero-cta-border: rgba(143, 173, 163, 0.18);
-  --color-hero-cta-bg-active: #0F1E22;
-  --color-hero-credential-border: rgba(200, 196, 188, 0.45);
+  --color-hero-surface: #F2F2F3;
+  --color-hero-surface-warm: #EFF0F1;
+  --color-hero-photo-overlay: rgba(13, 14, 19, 0.08);
+  --color-hero-fade-mid: rgba(242, 242, 243, 0.55);
+  --color-hero-name: #0D0E13;
+  --color-hero-eyebrow-rule: #9FABBC;
+  --color-hero-eyebrow-text: #5A7190;
+  --color-hero-credential-rule: rgba(159, 171, 188, 0.35);
+  --color-hero-credential-label: #5A687C;
+  --color-hero-credential-value: #343C47;
+  --color-hero-cta-bg: #12161F;
+  --color-hero-cta-text: #F1F2F3;
+  --color-hero-cta-border: rgba(159, 171, 188, 0.18);
+  --color-hero-cta-bg-active: #0D0E13;
+  --color-hero-credential-border: rgba(159, 171, 188, 0.35);
+ 
 
-  --shadow-testimonial-hover: 0 4px 32px rgba(25, 25, 23, 0.04);
+  --shadow-testimonial-hover: 0 4px 32px rgba(13, 14, 19, 0.04);
 
   --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-editorial: cubic-bezier(0.25, 0.1, 0.25, 1);
@@ -68,9 +70,9 @@
   background: linear-gradient(
     to bottom,
     var(--color-light) 0%,
-    rgba(88, 147, 146, 0.45) 5%,
-    rgba(88, 121, 111, 0.12) 68%,
-    rgba(57, 70, 67, 0.03) 85%,
+    rgba(159, 171, 188, 0.45) 5%,
+    rgba(90, 113, 144, 0.12) 68%,
+    rgba(18, 22, 31, 0.03) 85%,
     transparent 100%
   );
   -webkit-background-clip: text;
@@ -126,12 +128,12 @@ body {
     background: linear-gradient(
       to bottom,
       transparent 0%,
-      rgba(245, 244, 240, 0.04) 15%,
-      rgba(245, 244, 240, 0.12) 30%,
-      rgba(245, 244, 240, 0.28) 48%,
-      rgba(245, 244, 240, 0.52) 62%,
-      rgba(245, 244, 240, 0.78) 76%,
-      rgba(245, 244, 240, 0.94) 88%,
+      rgba(242, 242, 243, 0.04) 15%,
+      rgba(242, 242, 243, 0.12) 30%,
+      rgba(242, 242, 243, 0.28) 48%,
+      rgba(242, 242, 243, 0.52) 62%,
+      rgba(242, 242, 243, 0.78) 76%,
+      rgba(242, 242, 243, 0.94) 88%,
       var(--color-hero-surface) 100%
     );
     pointer-events: none;

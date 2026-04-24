@@ -8,26 +8,6 @@ interface SplashScreenProps {
   onComplete: () => void;
 }
 
-function SplitWord({ word, charClass }: { word: string; charClass: string }) {
-  return (
-    <>
-      {word.split("").map((char, i) => (
-        <span
-          key={i}
-          className={charClass}
-          style={{
-            display: "inline-block",
-            willChange: "transform",
-            transform: "translateY(115%)",
-          }}
-        >
-          {char}
-        </span>
-      ))}
-    </>
-  );
-}
-
 export default function SplashScreen({ onComplete }: SplashScreenProps) {
   const splashRef = useRef<HTMLDivElement>(null);
 
@@ -46,7 +26,7 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
 
     const ctx = gsap.context(() => {
       gsap.set(".char-name", { y: "115%" });
-      gsap.set([".splash-label", ".splash-logo", ".splash-corner"], {
+      gsap.set([".splash-label", ".splash-logo", ".splash-fallback-text", ".splash-corner"], {
         opacity: 0,
       });
       gsap.set(".splash-hairline", {
@@ -80,9 +60,16 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
         1.18
       );
 
+      /* Logo or fallback text — same timing slot */
       if (showLogo) {
         tl.to(
           ".splash-logo",
+          { opacity: 1, duration: 0.7, ease: "power2.out" },
+          1.3
+        );
+      } else {
+        tl.to(
+          ".splash-fallback-text",
           { opacity: 1, duration: 0.7, ease: "power2.out" },
           1.3
         );
@@ -133,7 +120,7 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
         <div
           className="splash-label mb-2 font-body uppercase text-accent"
           style={{
-            fontSize: "9px",
+            fontSize: "10px",
             letterSpacing: "0.52em",
             opacity: 0,
           }}
@@ -141,7 +128,7 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
           {splash.name}
         </div>
 
-        {showLogo && (
+        {showLogo ? (
           <img
             src={splash.logo.src}
             alt={splash.logo.alt}
@@ -153,6 +140,11 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
               opacity: 0,
             }}
           />
+        ) : (
+          <div className="splash-fallback-text mt-2 font-fraunces text-accent"
+          style={{ fontSize: "10px", letterSpacing: "0.40", opacity: 0 }}>
+            Cirurgia Plástica
+          </div>
         )}
       </div>
     </div>

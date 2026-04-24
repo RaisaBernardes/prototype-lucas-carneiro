@@ -19,7 +19,7 @@ const workSans = Work_Sans({
 
 
 export const metadata: Metadata = {
-  title: "Dr. Leandro Gregório — Cirurgião Plástico",
+  title: "Dr. Lucas Carneiro — Cirurgião Plástico",
   description: "Cirurgia Plástica Estética e Reparadora em São Paulo.",
 };
 

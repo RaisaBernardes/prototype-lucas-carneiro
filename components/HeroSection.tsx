@@ -166,7 +166,7 @@ export default function HeroSection({
       >
         <div
           className={[
-            "relative overflow-hidden bg-button",
+            "relative overflow-hidden bg-hero-bg",
             "md:h-auto md:flex-1 md:order-2",
           ].join(" ")}
         >
@@ -176,8 +176,8 @@ export default function HeroSection({
             fill
             priority
             sizes="73vw"
-            className="object-cover"
-            style={{ objectPosition: "70% top" }}
+            className="object-contain"
+            style={{ objectPosition: "80% 20%" }}
           />
 
           {quote && (

@@ -1,94 +1,94 @@
 {
   "hero": {
-    "imageAlt": "Dr. Leandro Gregório — Cirurgião Plástico",
-    "eyebrow": "Cirurgia Plástica",
-    "headline": "Dr. Leandro Gregório",
-    "body": "Cirurgia plástica com precisão, critério e respeito absoluto pela sua identidade.",
-    "ctaLabel": "Agendar conversa",
+    "imageAlt": "Dr. Lucas Carneiro — Cirurgião Plástico",
+    "eyebrow": "Cirurgia Plástica Estética e Reparadora",
+    "headline": "Dr. Lucas Carneiro",
+    "body": "Cirurgia plástica estética e reparadora com discrição, segurança e atendimento em São Paulo.",
+    "ctaLabel": "Agendar consulta",
     "ctaHref": "#contato",
-    "quote": "Cada cirurgia é um encontro entre confiança, responsabilidade e propósito.",
-    "quoteAttribution": "Dr. Leandro Gregório — Cirurgião Plástico",
+    "quote": "",
+    "quoteAttribution": "Dr. Lucas Carneiro — Cirurgião Plástico",
     "credentials": [
-      { "label": "CRM-SP", "value": "231278" },
-      { "label": "RQE", "value": "136020" },
-      { "label": "Membro", "value": "SBCP · ISAPS" }
+      { "label": "CRM", "value": "136.298" },
+      { "label": "Atuação", "value": "Hospital Israelita Albert Einstein" },
+      { "label": "Especialista", "value": "SBCP · AMB · MEC" }
     ]
   },
   "about": {
-    "ariaLabel": "Sobre o Dr. Leandro Gregório",
-    "headline": "Confiança que todos sentem.",
+    "ariaLabel": "Sobre o Dr. Lucas Carneiro",
+    "headline": "Autoridade cirúrgica com discrição e precisão.",
     "bodyParts": [
-      "Formado pela Universidade Federal de Minas Gerais, com residência em Cirurgia Geral pelo Hospital Odilon Behrens e especialização em Cirurgia Plástica pelo Hospital do Servidor Público Municipal de São Paulo, o ",
-      "Dr. Leandro Gregório",
-      " construiu uma prática baseada em escuta genuína e respeito ao resultado natural. Para ele, o melhor procedimento é aquele que ninguém nota — mas que muda tudo."
+      "Dr. Lucas Franco Mendes Carneiro é ",
+      "Cirurgião Plástico",
+      " com atuação no Hospital Israelita Albert Einstein em Cirurgia Plástica Estética e Reparadora. Também é chefe do Departamento de Cirurgia Plástica da Clínica Dr. José Olímpio Carneiro / SP DOCTORS e especialista pela Sociedade Brasileira de Cirurgia Plástica, Associação Médica Brasileira (AMB) e Ministério da Educação e Cultura (MEC)."
     ],
     "ctaButtonLabel": "Agendar consulta",
     "ctaButtonHref": "#contato"
   },
   "scrollTextReveal": {
-    "text": "Cada história carrega uma forma única de beleza, decisão e transformação. Nenhum olhar é igual ao outro, porque nenhum caminho vivido é o mesmo. Por trás de cada escolha, existe um tempo, uma memória e um motivo profundo. É nesse encontro entre identidade, desejo e verdade que o cuidado começa a fazer sentido.",
+    "text": "Cada procedimento exige escuta, critério e responsabilidade. Na cirurgia plástica estética e reparadora, a decisão deve respeitar a individualidade do paciente, o contexto clínico e a busca por resultados coerentes. Com atendimento em São Paulo, o cuidado é conduzido com segurança, discrição e atenção aos detalhes em cada etapa da experiência.",
     "accentWords": [
-      "história",
-      "beleza",
-      "transformação",
-      "identidade",
-      "verdade",
-      "cuidado"
+      "escuta",
+      "critério",
+      "responsabilidade",
+      "individualidade",
+      "segurança",
+      "discrição"
     ]
   },
   "storySection": {
-    "label": "04 — PROCEDIMENTOS",
-    "title": "Procedimentos",
-    "titleItalic": "realizados",
-    "subtitle": "Cada procedimento é planejado de forma individualizada, com base na anatomia, nos desejos e no estilo de vida de cada paciente.",
+    "label": "04 — ESPECIALIDADES",
+    "title": "Áreas de",
+    "titleItalic": "atuação",
+    "subtitle": "Atendimento voltado à cirurgia plástica estética e reparadora, com atuação complementar em cosmiatria e suporte especializado para pacientes que buscam discrição e acompanhamento personalizado.",
     "cards": [
       {
-        "index": "01",
-        "title": "When Dreams Start Small",
-        "body": "I grew up in post-communist Poland, a world where ambition was dangerous and opportunity scarce. Tennis became my escape and my whole identity.\n\nBy eighteen I was traveling the world on the WTA tour, ranked among the top players, fighting with nothing but grit and stubbornness.\n\nBut without financial backing, the dream collapsed. Overnight, the identity I had built my life around was gone, and I was forced to face the question: who am I without the game?",
-        "bodyMobile": "I grew up in post-communist Poland, where ambition was risky and opportunities scarce. Tennis became my escape and identity.\n\nBy eighteen I was on the WTA tour, fueled only by grit.\n\nBut without financial backing, the dream collapsed — and overnight I had to face the question: who am I without the game?",
+        "index": "",
+        "title": "Cirurgia Plástica Estética",
+        "body": "Atuação em cirurgia plástica estética com abordagem técnica, criteriosa e centrada na individualidade de cada paciente.\n\n[Substituir por lista oficial de procedimentos estéticos quando disponível.]",
+        "bodyMobile": "Atuação em cirurgia plástica estética com abordagem técnica e individualizada.\n\n[Inserir procedimentos.]",
         "bulletImages": [
-          { "src": "/images/poland-90s.jpg", "alt": "Poland, 1990s" },
-          { "src": "/images/wta-tour.jpg", "alt": "WTA Tour" },
-          { "src": "/images/crossroads.jpg", "alt": "The Crossroads" }
+          { "src": "/images/lucas-carneiro/estetica-1.jpg", "alt": "Cirurgia plástica estética" },
+          { "src": "/images/lucas-carneiro/estetica-2.jpg", "alt": "Planejamento cirúrgico estético" },
+          { "src": "/images/lucas-carneiro/estetica-3.jpg", "alt": "Atendimento em cirurgia estética" }
         ]
       },
       {
         "index": "02",
-        "title": "From Wall Street to the Freezer Floor",
-        "body": "With nothing left to fall back on, I left Poland for America. I started in a community college in Kansas, pushed my way to Baylor, and eventually earned a scholarship at the University of California, Berkeley.\n\nI became the first in my family to graduate from university, and I did it with honors.\n\nIt wasn't about the degree itself; it was about proving that reinvention is possible, even when you're standing on broken ground.",
-        "bodyMobile": "",
+        "title": "Cirurgia Plástica Reparadora",
+        "body": "A cirurgia plástica reparadora integra uma frente essencial da atuação do Dr. Lucas Carneiro, com foco em reconstrução e correção dentro de critérios médicos precisos.\n\n[Substituir por descrição oficial dos casos e procedimentos reparadores.]",
+        "bodyMobile": "Cirurgia plástica reparadora com foco em reconstrução e correção.\n\n[Inserir procedimentos.]",
         "bulletImages": [
-          { "src": "/images/kansas.jpg", "alt": "Kansas" },
-          { "src": "/images/berkeley.jpg", "alt": "Berkeley" },
-          { "src": "/images/graduation.jpg", "alt": "Graduation" }
+          { "src": "/images/lucas-carneiro/reparadora-1.jpg", "alt": "Cirurgia plástica reparadora" },
+          { "src": "/images/lucas-carneiro/reparadora-2.jpg", "alt": "Atendimento reparador" },
+          { "src": "/images/lucas-carneiro/reparadora-3.jpg", "alt": "Planejamento de cirurgia reparadora" }
         ]
       },
       {
         "index": "03",
-        "title": "Betting Everything on Myself",
-        "body": "After Berkeley I went straight into investment banking in London. Prestige, power, the adrenaline of 100-hour weeks — it looked like success.\n\nBut the longer I stayed, the louder the question became: is this really it?\n\nSo I left and opened a restaurant. I traded boardrooms for basements, Armani suits for aprons. Three years later, I closed it, broke and exhausted.\n\nLater I thrived in venture capital, working with founders and shaping strategy — until COVID collapsed our fund.",
-        "bodyMobile": "After Berkeley, I entered investment banking in London — prestige, power, 100-hour weeks. It looked like success, but the question grew louder: is this really it?\n\nI left to open a restaurant, only to close it three years later, broke and exhausted.\n\nLater I thrived in venture capital — until COVID collapsed our fund.",
+        "title": "Cosmiatria",
+        "body": "A cosmiatria complementa a atuação clínica com foco em cuidado estético não cirúrgico e acompanhamento alinhado ao perfil e aos objetivos de cada paciente.\n\n[Substituir por tratamentos específicos oferecidos.]",
+        "bodyMobile": "Cosmiatria com foco em cuidado estético não cirúrgico.\n\n[Inserir tratamentos.]",
         "bulletImages": [
-          { "src": "/images/banking.jpg", "alt": "Banking" },
-          { "src": "/images/restaurant.jpg", "alt": "Restaurant" },
-          { "src": "/images/venture.jpg", "alt": "Venture Capital" }
+          { "src": "/images/lucas-carneiro/cosmiatria-1.jpg", "alt": "Cosmiatria" },
+          { "src": "/images/lucas-carneiro/cosmiatria-2.jpg", "alt": "Cuidado estético facial" },
+          { "src": "/images/lucas-carneiro/cosmiatria-3.jpg", "alt": "Tratamentos de cosmiatria" }
         ]
       },
       {
         "index": "04",
-        "title": "The Moment It All Made Sense",
-        "body": "Through all those chapters — tennis, banking, entrepreneurship, venture — I began to see the same truth: the strongest performers never do it alone. Athletes always have coaches. Executives and founders need them too.\n\nCoaching is not damage control. It's not about fixing what is broken. It is about clarity, performance, and the courage to make the moves you know you need to make.\n\nThat realization didn't come from a book. It came from living every version of reinvention firsthand.",
-        "bodyMobile": "Through tennis, banking, entrepreneurship, and venture — the same truth emerged: the strongest performers never do it alone.\n\nCoaching isn't damage control. It's about clarity, performance, and courage.\n\nThat realization came from living every version of reinvention firsthand.",
+        "title": "Atendimento VIP e Internacional",
+        "body": "A equipe oferece um serviço especializado para clientes VIP e internacionais, com custo adicional, atendimento em horários reservados, privacidade do paciente, segurança e discrição.\n\nTambém está disponível um serviço de concierge para cuidar de detalhes relacionados à cirurgia, incluindo transporte, acomodação, segurança e privacidade.",
+        "bodyMobile": "Serviço especializado para clientes VIP e internacionais, com privacidade, segurança, discrição e concierge dedicado.",
         "bulletImages": [
-          { "src": "/images/coaching.jpg", "alt": "Coaching" },
-          { "src": "/images/clarity.jpg", "alt": "Clarity" },
-          { "src": "/images/performance.jpg", "alt": "Performance" }
+          { "src": "/images/lucas-carneiro/vip-1.jpg", "alt": "Atendimento VIP" },
+          { "src": "/images/lucas-carneiro/vip-2.jpg", "alt": "Atendimento internacional" },
+          { "src": "/images/lucas-carneiro/vip-3.jpg", "alt": "Serviço de concierge" }
         ]
       }
     ]
   },
-  "testimonialsMarquee": {
+    "testimonialsMarquee": {
     "label": "DEPOIMENTOS",
     "title": "O que meus pacientes",
     "titleAccent": "dizem",
@@ -147,39 +147,44 @@
   },
   "contactSection": {
     "label": "05 — CONTATO",
-    "title": "Vamos conversar",
-    "titleItalic": "conversar",
-    "subtitle": "Agende uma consulta ou entre em contato para tirar suas dúvidas. Estamos à disposição para atendê-lo com excelência.",
+    "title": "Agende sua",
+    "titleItalic": "consulta",
+    "subtitle": "Entre em contato para informações, agendamentos e orientações sobre atendimento em cirurgia plástica estética, reparadora e cosmiatria.",
     "marqueeText": "Contato  ·  ",
     "contactItems": [
       {
         "label": "Telefone",
-        "value": "(11) 3889-0893",
-        "href": "tel:+551138890893"
+        "value": "(11) 5182.0777",
+        "href": "tel:+551151820777"
+      },
+      {
+        "label": "WhatsApp",
+        "value": "(11) 97777.6600",
+        "href": "https://wa.me/5511977776600"
       },
       {
         "label": "Endereço",
-        "value": "Rua Itapeva, 286 — Cj. 82\nBela Vista, São Paulo — SP"
+        "value": "Rua Verbo Divino, 451 — Chácara Santo Antônio\nSão Paulo — SP"
       },
       {
         "label": "Horário",
-        "value": "Seg – Sex, 9h – 18h"
+        "value": "Segunda à sexta, 07:00 às 17:30\nSábados, 07:00 às 11:30"
       }
     ],
-    "whatsappHref": "https://wa.me/551138890893",
+    "whatsappHref": "https://wa.me/5511977776600",
     "whatsappLabel": "Agendar pelo WhatsApp"
   },
   "footerSection": {
-    "logoAlt": "Dr. Leandro Gregório",
-    "brandName": "Dr. Leandro Gregório",
-    "brandDescription": "Cirurgia plástica com excelência técnica e atenção personalizada — referência em procedimentos estéticos e reparadores em São Paulo.",
+    "logoAlt": "Dr. Lucas Carneiro",
+    "brandName": "Dr. Lucas Carneiro",
+    "brandDescription": "Cirurgia plástica estética e reparadora com atuação em São Paulo, foco em discrição, segurança e atendimento personalizado.",
     "columns": [
       {
         "title": "Navegação",
         "links": [
           { "label": "Início", "href": "#" },
           { "label": "Sobre", "href": "#sobre" },
-          { "label": "Procedimentos", "href": "#procedimentos" },
+          { "label": "Especialidades", "href": "#especialidades" },
           { "label": "Depoimentos", "href": "#depoimentos" },
           { "label": "Contato", "href": "#contato" }
         ]
@@ -187,53 +192,56 @@
       {
         "title": "Consultório",
         "links": [
-          { "label": "Rua Itapeva, 286 — Cj. 82" },
-          { "label": "Bela Vista, São Paulo — SP" },
-          { "label": "(11) 3889-0893", "href": "tel:+551138890893" }
+          { "label": "Rua Verbo Divino, 451" },
+          { "label": "Chácara Santo Antônio, São Paulo — SP" },
+          { "label": "(11) 5182.0777", "href": "tel:+551151820777" },
+          { "label": "(11) 97777.6600", "href": "https://wa.me/5511977776600" }
         ]
       },
       {
         "title": "Credenciais",
         "links": [
-          { "label": "CRM SP 231278" },
-          { "label": "RQE 136020" },
-          { "label": "Membro SBCP" },
-          { "label": "Membro ISAPS" }
+          { "label": "CRM 136.298" },
+          { "label": "Hospital Israelita Albert Einstein" },
+          { "label": "Especialista SBCP" },
+          { "label": "Especialista AMB" },
+          { "label": "Especialista MEC" }
         ]
       }
     ],
     "socials": [
-      { "platform": "Instagram", "href": "https://instagram.com/dr.leandrogregorio" },
-      { "platform": "LinkedIn", "href": "#" },
-      { "platform": "WhatsApp", "href": "https://wa.me/551138890893" }
+      { "platform": "Instagram", "href": "[INSERIR_LINK_INSTAGRAM]" },
+      { "platform": "Facebook", "href": "[INSERIR_LINK_FACEBOOK]" },
+      { "platform": "WhatsApp", "href": "https://wa.me/5511977776600" }
     ],
-    "copyright": "© 2025 Dr. Leandro Gregório. Todos os direitos reservados.",
+    "copyright": "© 2025 Dr. Lucas Carneiro. Todos os direitos reservados.",
     "legalLinks": [
-      { "label": "Termos de Uso", "href": "#" },
-      { "label": "Política de Privacidade", "href": "#" }
+      { "label": "Termos de Uso", "href": "[INSERIR_LINK]" },
+      { "label": "Política de Privacidade", "href": "[INSERIR_LINK]" }
     ],
-    "giantName": "Leandro Gregório",
+    "giantName": "Lucas Carneiro",
     "scrollTopLabel": "Topo",
     "scrollTopAriaLabel": "Voltar ao topo"
   },
   "contact": {
-    "eyebrow": "",
-    "headline": "",
-    "ctaLabel": "",
-    "ctaHref": ""
+    "eyebrow": "Contato",
+    "headline": "Fale com a equipe do Dr. Lucas Carneiro",
+    "ctaLabel": "Entrar em contato",
+    "ctaHref": "#contato"
   },
   "footer": {
-    "copyright": ""
+    "copyright": "© 2025 Dr. Lucas Carneiro. Todos os direitos reservados."
   },
   "navbar": {
-    "links": []
+    "links": [
+      { "label": "Início", "href": "#" },
+      { "label": "Sobre", "href": "#sobre" },
+      { "label": "Especialidades", "href": "#especialidades" },
+      { "label": "Contato", "href": "#contato" }
+    ]
   },
   "splashScreen": {
-  "name": "Leandro Gregório",
-  "logo": {
-    "enabled": true,
-    "src": "/images/leandro-gregorio/logo-leandro.webp",
-    "alt": "Leandro Gregório"
+    "name": "Lucas Carneiro",
+    "logo": { "enabled": false, "src": "", "alt": "" }
   }
-}
 }

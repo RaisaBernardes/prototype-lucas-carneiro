@@ -10,7 +10,7 @@ interface NavLink {
 }
 
 interface NavbarProps {
-  logoSrc: string;
+  logoSrc?: string;
   logoAlt?: string;
   logoWidth?: number;
   logoHeight?: number;
@@ -249,29 +249,37 @@ export default function Navbar({
         }}
       >
         <div className="mx-auto flex h-full max-w-[1320px] items-center justify-between px-6 md:px-10 lg:px-14">
-          {/* ── Logo ── */}
-          <Link
-            href="/"
-            aria-label="Ir para o início"
-            className="shrink-0 focus-visible:outline-2 focus-visible:outline-offset-4"
-            style={{ outlineColor: "var(--color-accent)" }}
-          >
-            <Image
-              src={logoSrc}
-              alt={logoAlt}
-              width={logoWidth}
-              height={logoHeight}
-              priority
+          {/* ── Logo (optional) ── */}
+          {logoSrc ? (
+            <Link
+              href="/"
+              aria-label="Ir para o início"
+              className="shrink-0 focus-visible:outline-2 focus-visible:outline-offset-4"
               style={{
-                width: logoWidth,
-                height: logoHeight,
-                objectFit: "contain",
-                objectPosition: "left center",
-                filter: opaque ? "none" : "brightness(0) invert(1)",
-                transition: "filter 0.3s ease",
+                outlineColor: "var(--color-accent)",
+                background: "transparent",
               }}
-            />
-          </Link>
+            >
+              <Image
+                src={logoSrc}
+                alt={logoAlt}
+                width={logoWidth}
+                height={logoHeight}
+                priority
+                style={{
+                  width: logoWidth,
+                  height: logoHeight,
+                  objectFit: "contain",
+                  objectPosition: "left center",
+                  background: "transparent",
+                  filter: opaque ? "none" : "brightness(0) invert(1)",
+                  transition: "filter 0.3s ease",
+                }}
+              />
+            </Link>
+          ) : (
+            <div className="shrink-0" style={{ width: logoWidth, height: logoHeight }} />
+          )}
 
           {/* ── Desktop nav (unchanged) ── */}
           <nav
